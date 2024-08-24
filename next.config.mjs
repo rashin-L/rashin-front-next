@@ -1,37 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-// const withImages = require('next-images');
-import withImages from 'next-images';
 
-// const { i18n } = require('./next-i18next.config.js');
 import pkg from './next-i18next.config.js';
 const { i18n } = pkg;
-// javascript
-// const nextConfig = async () => {
-    
-//     const { i18n } = await import('./next-i18next.config.js');
-    
-//     const config = {
-//         images: {
-//             domains: ['api.rashin-web-dev.com'],
-//         },
-//         // webpack5: true,
-//          webpack: (config, { isServer }) => {
-//             config.resolve.fallback = { fs: false };
-    
-//             return config;
-//         },
-//         i18n,
-//         reactStrictMode: true,
-//         output: 'standalone',
-//     };
-
-//     return config;
-// };
 
 const nextConfig = {
-    // const { i18n } = await import('./next-i18next.config.js');
-    
 
     swcMinify: true,
     productionBrowserSourceMaps: false,
@@ -77,5 +50,3 @@ const nextConfig = {
 
 
 export default nextConfig;
-
-

@@ -6,9 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "lint": "next lint",
-    "build-htaccess": "next-htaccess-generator build"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "@babel/plugin-transform-private-methods": "^7.24.7",
@@ -40,15 +39,14 @@
     "i18next-http-backend": "^2.4.2",
     "i18next-xhr-backend": "^3.2.2",
     "js-cookie": "^3.0.5",
-    "next": ">= 12.0.0",
+    "next": "^14.2.6",
     "next-i18next": "^15.1.2",
     "next-images": "^1.8.5",
     "next-redux-wrapper": "^8.1.0",
-    "node": "^20.14.0",
     "npm": "^10.7.0",
     "query-string": "^8.1.0",
-    "react": ">= 17.0.2",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-i18next": ">= 13.5.0",
     "react-icons": "^5.0.0",
     "react-lazy-load-image-component": "^1.6.0",
@@ -69,7 +67,7 @@
     "@types/i18next-xhr-backend": "^1.4.2",
     "@types/node": "20.10.7",
     "autoprefixer": "^10.0.1",
-    "next-htaccess-generator": "^1.0.3",
+    "cross-env": "^7.0.3",
     "next-translate-plugin": "^2.6.2",
     "npm-install-peers": "^1.2.2",
     "postcss": "^8",
@@ -78,8 +76,6 @@
   },
   "peerDependencies": {
     "i18next": ">= 23.7.13",
-    "next": ">= 12.0.0",
-    "react": ">= 17.0.2",
     "react-i18next": ">= 13.5.0"
   }
 }

@@ -17,12 +17,29 @@
 
 // next-i18next.config.js
 module.exports = {
-    distDir: "_next",
+    cacheHandler: require.resolve('./cache-handler.js'),
+    cacheMaxMemorySize: 0, // disable default in-memory caching
+    distDir: ".next",
+    defaultLocale: "en",
+    locales: ["en", "fr"],
+    defaultNS: "default",
+    localePath: "./public/locales",
+    localeExtension: "json",
+    localeStructure: "{{lng}}/{{ns}}",
     // https://www.i18next.com/overview/configuration-options#logging
     // debug: process.env.NODE_ENV === 'development',
     i18n: {
         defaultLocale: 'en',
         locales: ['en', 'fa'],
+         domains: [
+      {
+        domain: 'rashin-web-dev.com',
+        defaultLocale: 'en-US',
+        // other locales that should be handled on this domain
+        locales: ['en', 'fa'],
+      },
+      
+    ],
     },
     /** To avoid issues when deploying to some paas (vercel...) */
     localePath:
