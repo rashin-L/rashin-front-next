@@ -8,6 +8,7 @@ export default {
       background: {
         default: 'rgb(60 96 113 )',
         paper: 'rgb(60 96 113 )',
+        blur:'#a6a6a671'
       },
       text: {
         primary: 'rgba(255, 255, 255, 0.95)',
@@ -28,6 +29,7 @@ export default {
       background: {
         paper: "rgb(221 214 254 )",
         default: "rgb(221 214 254 )",
+        blur:'#ffffff71'
       },
       text: {
         primary: '#3C6071',

@@ -10,8 +10,8 @@
   },
   "components": {
     "hero": {
-      "hi": "Hi,",
-      "am":"i'am"
+    "hi": "اهلا وسهلا,",
+    "am":"i'am"
     },
     "herobotton": {
       "cv": "View My CV"

@@ -22,7 +22,7 @@ import { useState } from "react";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
 
-const Projects = () => {
+const Team = () => {
   const router = useRouter();
   const { t } = useTranslation(["translation"]);
   const [info, setInfo] = useState('');
@@ -59,7 +59,7 @@ const Projects = () => {
             gutterBottom
           >
             {/* Projects */}
-            {t("components.projects.title")}
+            {t("components.projects.team-title")}
           </Typography>
           <Typography
             variant="h6"
@@ -70,14 +70,14 @@ const Projects = () => {
             marginBottom={6}
           >
             {/* Showcasing My Solo Creations */}
-            {t("components.projects.desc")}
+            {t("components.projects.team-desc")}
           </Typography>
         </Box>
         <Grid container spacing={4}>
           {data &&
             data?.map((item, i) => (
               <>
-                {item?.team_size === 1 && (
+                {item?.team_size > 1 && (
                   <Grid
                     onMouseLeave={() => setInfo("")}
                     className={`${
@@ -92,7 +92,7 @@ const Projects = () => {
                     data-aos-offset={100}
                     data-aos-duration={600}
                   >
-                    <Image
+                    {/* <Image
                       onMouseEnter={() => setInfo(item.id)}
                       // onMouseLeave={() => setInfo('')}
                       // onMouseOut={() => setInfo(null)}
@@ -104,9 +104,9 @@ const Projects = () => {
                       // className="w-[30%] h-[18rem] rounded-l-[4px]"
                       className="w-full h-[18rem] rounded-l-[4px]"
                       priority
-                    />
+                    /> */}
                     {/* <Fade> */}
-                    {info === item.id && (
+                    {/* {info === item.id && ( */}
                       <Box
                         component={Card}
                         width={1}
@@ -119,7 +119,7 @@ const Projects = () => {
                         }}
                         // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
                         // !bg-[${theme.palette.primary.main}]
-                        className={`w-full   backdrop-blur-[10px] !bg-[${theme.palette.background.blur}] shadow-2xl absolute h-full z-[90] top-0`}
+                        className={`w-full   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl absolute h-full z-[90] top-0`}
                       >
                         <CardContent className="h-[18rem]  ">
                           <div
@@ -182,7 +182,6 @@ const Projects = () => {
                         </CardContent>
                         <Box />
                       </Box>
-                    )}
                     {/* </Fade> */}
                   </Grid>
                 )}
@@ -195,4 +194,4 @@ const Projects = () => {
   );
 };
 
-export default React.memo(Projects);
+export default React.memo(Team);

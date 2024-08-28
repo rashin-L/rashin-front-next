@@ -33,12 +33,14 @@ const LanguageProvider = ({ children }) => {
   const handleLanguage = (selectedLang) => {
     setLang(selectedLang);
     setCurrentLang(
-      selectedLang === "en"
-        ? "English"
-        : selectedLang === "fa"
-          ? "Persian"
-          : "fa"
-    );
+     selectedLang === "en" 
+  ? "English" 
+  : selectedLang === "fa" 
+    ? "Persian" 
+    : selectedLang === "ar"  
+      ? "Arabic"  
+      : "en"
+    )
     Cookies.set("selectedLang", selectedLang);
 
     i18next.changeLanguage(selectedLang);
@@ -141,6 +143,26 @@ const LanguageProvider = ({ children }) => {
                       className=" h-[1rem] w-[2rem] block text-white"
                     />
                     English
+                  </div>
+                </Box>
+                 <Box
+                  component='li'
+                  sx={{
+                    '&:hover': {
+                      color: 'white',
+                      backgroundColor: theme.palette.primary.main,
+                      borderRadius: '0.25rem'
+                    },
+                  }}
+                  onClick={() => handleLanguage("ar")}
+                >
+                  <div className=" flex items-center gap-1  m-auto p-1">
+                    <img
+                      src={English}
+                      alt="logo"
+                      className=" h-[1rem] w-[2rem] block text-white"
+                    />
+                    Arabic
                   </div>
                 </Box>
               </Box>

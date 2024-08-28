@@ -89,6 +89,7 @@ import { initReactI18next } from 'react-i18next';
 
 import translationEN from './public/locales/en/translation.json';
 import translationFA from './public/locales/fa/translation.json';
+import translationAr from './public/locales/ar/translation.json';
 
 const resources = {
     en: {
@@ -97,6 +98,9 @@ const resources = {
     fa: {
         translation: translationFA,
     },
+    ar:{
+        translation: translationAr
+    }
 };
 
 i18n.use(initReactI18next).init({

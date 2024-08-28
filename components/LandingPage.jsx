@@ -8,6 +8,7 @@ import Contact from "./Contact";
 import Hero from "./Hero";
 // import Projects from "../components/Projects";
 import Projects from "@/components/Projects";
+import Team from "@/components/Team"
 import Technologies from "./Technologies";
 import PortfolioImage from "@/components/PortfolioImage";
 import Navbar from "@/layout/Navbar";
@@ -68,6 +69,7 @@ const LandingPage = () => {
         <Hero />
         <About />
         <Projects />
+        <Team/>
         <Technologies />
         <Contact />
       </div>

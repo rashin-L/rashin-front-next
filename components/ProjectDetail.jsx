@@ -75,13 +75,17 @@ const ProjectDetail = ({ slug }) => {
                   <Bounce left>
                     <div className="block mb-3 ">
                       <div className=" flex gap-1 items-center align-baseline mb-2">
-                        {projectData[0] && projectData[0]?.icon && (
-                          <img
-                            src={`${projectData[0] && projectData[0]?.icon}`}
-                            alt="project_icon"
-                            className="w-8 h-8 mr-4 "
-                          />
-                        )}
+                        {projectData[0] &&
+                          projectData[0]?.project_main_img?.logo && (
+                            <img
+                              src={`${
+                                projectData[0] &&
+                                projectData[0]?.project_main_img?.logo
+                              }`}
+                              alt="project_icon"
+                              className="w-8 h-8 mr-4 "
+                            />
+                          )}
                         <Typography
                           variant="h6"
                           align="left"

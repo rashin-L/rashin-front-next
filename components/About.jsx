@@ -25,35 +25,36 @@ const About = () => {
   const selectedLang = Cookies.get('selectedLang')|| 'en';
   const theme = useTheme();
   const  {data} =  useGetAboutQuery(selectedLang || 'en') 
+  
 
 
   return (
-    <div id='about'>
+    <div id="about">
       <Box
         maxWidth={{ sm: 720, md: 1236 }}
         width={1}
-        margin='0 auto'
+        margin="0 auto"
         paddingX={2}
         paddingY={{ xs: 4, sm: 6, md: 8 }}
       >
         <Box>
           <Box marginBottom={4}>
             <Typography
-              variant='h3'
-              align='center'
+              variant="h3"
+              align="center"
               fontWeight={700}
               marginTop={theme.spacing(1)}
-              data-aos='fade-up'
+              data-aos="fade-up"
               gutterBottom
             >
               {/* About Me */}
               {t("components.about.about")}
             </Typography>
             <Typography
-              variant='h6'
+              variant="h6"
               color={theme.palette.text.secondary}
-              align='center'
-              data-aos='fade-up'
+              align="center"
+              data-aos="fade-up"
               marginTop={4}
               marginBottom={6}
             >
@@ -62,53 +63,73 @@ const About = () => {
             </Typography>
           </Box>
           <Grid container spacing={4}>
-            {data && data.map((about) =>
-              <Grid 
-              
-              className={`${selectedLang === "fa" ? 'rtl' : ''}`} 
-              key={about.id} item xs={12} sm={6} md={4} >
-                <ListItem
-                  component='div'
-                  disableGutters
-                  sx={{
-                    alignItems: 'flex-start',
-                    padding: 0,
-                    gap: '0.5rem'
-                  }}
+            {console.log(data && data)}
+            {data &&
+              data.map((about) => (
+                <Grid
+                  className={`${selectedLang === "fa" ? "rtl" : ""}`}
+                  key={about.id}
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
                 >
-                  <ListItemAvatar>
-                   {selectedLang === "en" &&
-                  <Box color={theme.palette.primary.main}>
-                      <Image className="w-20 h-16 "  width={80} height={80}  src={`${about.icon}`} />
-                    </Box>
-                  
-                  }
-                  </ListItemAvatar>
-                  <ListItemText
-                  className={`  ${selectedLang === "fa" ? 'text-right mr-2' :(selectedLang === "fa"&& 'text-left' )}`}
-                    primary={about.title}
-                    secondary={about.description}
-                    primaryTypographyProps={{
-                      variant: 'h4',
-                      gutterBottom: true,
-                      sx: { fontWeight: 700 },
+                  <ListItem
+                    component="div"
+                    disableGutters
+                    sx={{
+                      alignItems: "flex-start",
+                      padding: 0,
+                      gap: "0.5rem",
                     }}
-                    secondaryTypographyProps={{
-                      variant: 'subtitle1',
-                      gutterBottom: true,
-                    }}
-                    
-                  />
-                  {selectedLang === "fa" &&
-                  <Box color={theme.palette.primary.main}>
-                      <Image className="w-24 h-16 "  width={80} height={80} src={`${about.icon}`} />
-                    </Box>
-                  
-                  }
-                  
-                </ListItem>
-              </Grid>
-            )}
+                  >
+                    <ListItemAvatar>
+                      {selectedLang === "en" && (
+                        <Box color={theme.palette.primary.main}>
+                          <Image
+                            alt={`${about.icon?.title}`}
+                            className="w-20 h-16 "
+                            width={80}
+                            height={80}
+                            src={`${about.icon?.icon}`}
+                            priority
+                          />
+                        </Box>
+                      )}
+                    </ListItemAvatar>
+                    <ListItemText
+                      className={`  ${
+                        selectedLang === "fa"
+                          ? "text-right mr-2"
+                          : selectedLang === "fa" && "text-left"
+                      }`}
+                      primary={about.title}
+                      secondary={about.description}
+                      primaryTypographyProps={{
+                        variant: "h4",
+                        gutterBottom: true,
+                        sx: { fontWeight: 700 },
+                      }}
+                      secondaryTypographyProps={{
+                        variant: "subtitle1",
+                        gutterBottom: true,
+                      }}
+                    />
+                    {selectedLang === "fa" && (
+                      <Box color={theme.palette.primary.main}>
+                        <Image
+                          alt={`${about.icon?.title}`}
+                          className="w-20 h-16 "
+                          width={80}
+                          height={80}
+                          src={`${about.icon?.icon}`}
+                          priority
+                        />
+                      </Box>
+                    )}
+                  </ListItem>
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Box>
