@@ -102,88 +102,92 @@ const Projects = () => {
                       width={600}
                       height={500}
                       // className="w-[30%] h-[18rem] rounded-l-[4px]"
-                      className="w-full h-[18rem] rounded-l-[4px]"
+                      className={`w-full h-[18rem] rounded-l-[4px] ${
+                        info === item.id && "blur-sm"
+                      }`}
                       priority
                     />
-                    {/* <Fade> */}
                     {info === item.id && (
-                      <Box
-                        component={Card}
-                        width={1}
-                        display="flex"
-                        flexDirection="column"
-                        sx={{
-                          backgroundColor: "rgb(255 255 255 / 0.3)",
-                          transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
-                          opacity: 1, // Initial opacity is 1 (fully visible)
-                        }}
-                        // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
-                        // !bg-[${theme.palette.primary.main}]
-                        className={`w-full   backdrop-blur-[10px] !bg-[${theme.palette.background.blur}] shadow-2xl absolute h-full z-[90] top-0`}
-                      >
-                        <CardContent className="h-[18rem]  ">
-                          <div
-                            onClick={() =>
-                              router?.push(`/project/${item?.slug}`)
-                            }
-                            className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
-                          >
-                            {item.project_main_img?.logo && (
-                              <Image
-                                src={`${item.project_main_img?.logo}`}
-                                alt={item.project_main_img?.title}
-                                width={100}
-                                height={100}
-                                className="w-[2rem] h-[2rem] drop-shadow-2xl"
-                                priority
-                              />
-                            )}
-                            <Typography
-                              variant="h4"
-                              // gutterBottom
-                              align="left"
-                              fontWeight={700}
-                              className=" self-end drop-shadow-2xl"
-                            >
-                              {item.project_name}
-                            </Typography>
-                          </div>
-
-                          <Typography
-                            variant="h6"
-                            fontWeight={700}
-                            className={`${
-                              selectedLang === "fa"
-                                ? "text-right mr-2"
-                                : selectedLang === "fa" && "text-left"
-                            } drop-shadow-2xl`}
-                            color={theme.palette.text.secondary}
-                          >
-                            {item.short_description}
-                          </Typography>
-
+                      <Grid>
+                        <Fade triggerOnce>
                           <Box
-                            marginTop={2}
+                            component={Card}
+                            width={1}
                             display="flex"
-                            justifyContent="space-between"
+                            flexDirection="column"
+                            sx={{
+                              backgroundColor: "rgb(255 255 255 / 0.3)",
+                              transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
+                              opacity: 1, // Initial opacity is 1 (fully visible)
+                            }}
+                            // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
+                            // !bg-[${theme.palette.primary.main}]
+                            className={`w-full [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]   backdrop-blur-[10px] !bg-[${theme.palette.background.blur}] shadow-2xl absolute h-full z-[90] right-0 top-0`}
                           >
-                            <Box marginTop={2}>
-                              {item.skills_used.map((tag, i) => (
-                                <Chip
-                                  className="drop-shadow-2xl"
-                                  key={i}
-                                  label={tag.title}
-                                  variant="outlined"
-                                  sx={{ m: 1 }}
-                                />
-                              ))}
-                            </Box>
+                            <CardContent className="h-[18rem]  ">
+                              <div
+                                onClick={() =>
+                                  router?.push(`/project/${item?.slug}`)
+                                }
+                                className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
+                              >
+                                {item.project_main_img?.logo && (
+                                  <Image
+                                    src={`${item.project_main_img?.logo}`}
+                                    alt={item.project_main_img?.title}
+                                    width={100}
+                                    height={100}
+                                    className="w-[2rem] h-[2rem] drop-shadow-2xl"
+                                    priority
+                                  />
+                                )}
+                                <Typography
+                                  variant="h4"
+                                  // gutterBottom
+                                  align="left"
+                                  fontWeight={700}
+                                  className=" self-end drop-shadow-2xl"
+                                >
+                                  {item.project_name}
+                                </Typography>
+                              </div>
+
+                              <Typography
+                                variant="h6"
+                                fontWeight={700}
+                                className={`${
+                                  selectedLang === "fa"
+                                    ? "text-right mr-2"
+                                    : selectedLang === "fa" && "text-left"
+                                } drop-shadow-2xl`}
+                                color={theme.palette.text.primary}
+                              >
+                                {item.short_description}
+                              </Typography>
+
+                              <Box
+                                marginTop={2}
+                                display="flex"
+                                justifyContent="space-between"
+                              >
+                                <Box marginTop={2}>
+                                  {item.skills_used.map((tag, i) => (
+                                    <Chip
+                                      className="drop-shadow-2xl"
+                                      key={i}
+                                      label={tag.title}
+                                      variant="outlined"
+                                      sx={{ m: 1 }}
+                                    />
+                                  ))}
+                                </Box>
+                              </Box>
+                            </CardContent>
+                            <Box />
                           </Box>
-                        </CardContent>
-                        <Box />
-                      </Box>
+                        </Fade>
+                      </Grid>
                     )}
-                    {/* </Fade> */}
                   </Grid>
                 )}
               </>

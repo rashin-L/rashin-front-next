@@ -34,33 +34,36 @@ const HeroButtons = () => {
   return (
     <>
       <Box
-      className={`${selectedLang === "fa" ? 'justify-end' : 'justify-start'}`}
-        display='flex'
-        flexDirection={{ xs: 'column', sm: 'row' }}
-        alignItems={{ xs: 'stretched', sm: 'flex-start' }}
+        className={`${
+          selectedLang === "fa" || selectedLang === "ar"
+            ? "justify-end"
+            : "justify-start"
+        }`}
+        display="flex"
+        flexDirection={{ xs: "column", sm: "row" }}
+        alignItems={{ xs: "stretched", sm: "flex-start" }}
         // justifyContent='right'
         marginTop={4}
       >
         <Button
-          component='a'
-          variant='contained'
-          color='primary'
-          size='large'
+          component="a"
+          variant="contained"
+          color="primary"
+          size="large"
           onClick={cvDownload}
           endIcon={<AssignmentIcon />}
           fullWidth={isMd ? false : true}
           disableElevation={true}
           sx={{
-
-            padding: '10px 25px',
+            padding: "10px 25px",
             // marginRight: '15px',
-            fontSize: '16px',
-            textTransform: 'none',
-            border: '2px solid ' + theme.palette.primary.main,
-            '&:hover': {
-              backgroundColor: 'transparent',
+            fontSize: "16px",
+            textTransform: "none",
+            border: "2px solid " + theme.palette.primary.main,
+            "&:hover": {
+              backgroundColor: "transparent",
               color: theme.palette.primary.main,
-              border: '2px solid ' + theme.palette.primary.main,
+              border: "2px solid " + theme.palette.primary.main,
             },
           }}
         >
@@ -69,9 +72,8 @@ const HeroButtons = () => {
         <Box
           marginTop={{ xs: 2, sm: 0 }}
           marginLeft={{ sm: 1 }}
-          width={{ xs: '100%', md: 'auto' }}
-        >
-        </Box>
+          width={{ xs: "100%", md: "auto" }}
+        ></Box>
       </Box>
     </>
   );

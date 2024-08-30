@@ -18,21 +18,30 @@ export const infoAPI = createApi({
     },
     endpoints: (builder) => ({
         getInfo: builder.query({
-            query: () => 'info?language=en',
+            // query: () => 'info?language=en',
+            query: (language) => `info?language=${language}`,
             tagTypes: ['Info'],
             headers: {
                 'Accept': 'application/json',
                 // 'Access-Control-Allow-Origin': "https://api.rashin-web-dev.com",
             },
         }),
-        getInfoFa: builder.query({
-            query: () => 'info?language=fa',
-            tagTypes: ['Info'],
-            headers: {
-                'Accept': 'application/json',
-                // 'Access-Control-Allow-Origin': "https://api.rashin-web-dev.com",
-            },
-        }),
+        // getInfoFa: builder.query({
+        //     query: () => 'info?language=fa',
+        //     tagTypes: ['Info'],
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         // 'Access-Control-Allow-Origin': "https://api.rashin-web-dev.com",
+        //     },
+        // }),
+        //  getInfoAr: builder.query({
+        //     query: () => 'info?language=ar',
+        //     tagTypes: ['Info'],
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         // 'Access-Control-Allow-Origin': "https://api.rashin-web-dev.com",
+        //     },
+        // }),
         getAbout: builder.query({
             query: (language) => `about?language=${language}`,
             tagTypes: ['about'],
@@ -52,4 +61,4 @@ export const infoAPI = createApi({
     }),
 });
 // console.log(`https://api.rashin-web-dev.com/info`);
-export const { useGetInfoQuery, useGetInfoFaQuery, useGetAboutQuery, useGetSocialQuery } = infoAPI;
+export const { useGetInfoQuery, useGetAboutQuery, useGetSocialQuery } = infoAPI;

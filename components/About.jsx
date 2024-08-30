@@ -67,7 +67,9 @@ const About = () => {
             {data &&
               data.map((about) => (
                 <Grid
-                  className={`${selectedLang === "fa" ? "rtl" : ""}`}
+                  className={`${
+                    selectedLang === "fa" || selectedLang === "ar" ? "rtl" : ""
+                  }`}
                   key={about.id}
                   item
                   xs={12}
@@ -88,7 +90,8 @@ const About = () => {
                         <Box color={theme.palette.primary.main}>
                           <Image
                             alt={`${about.icon?.title}`}
-                            className="w-20 h-16 "
+                            // className="w-[4.8rem] h-16 "
+                            className="w-[12rem] h-[10rem]  absolute z-0 blur-sm left-8"
                             width={80}
                             height={80}
                             src={`${about.icon?.icon}`}
@@ -98,10 +101,11 @@ const About = () => {
                       )}
                     </ListItemAvatar>
                     <ListItemText
-                      className={`  ${
-                        selectedLang === "fa"
+                      className={` z-10 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]  ${
+                        selectedLang === "fa" || selectedLang === "ar"
                           ? "text-right mr-2"
-                          : selectedLang === "fa" && "text-left"
+                          : selectedLang === "fa" ||
+                            (selectedLang === "ar" && "text-left")
                       }`}
                       primary={about.title}
                       secondary={about.description}
@@ -115,11 +119,12 @@ const About = () => {
                         gutterBottom: true,
                       }}
                     />
-                    {selectedLang === "fa" && (
+                    {(selectedLang === "fa" || selectedLang === "ar") && (
                       <Box color={theme.palette.primary.main}>
                         <Image
                           alt={`${about.icon?.title}`}
-                          className="w-20 h-16 "
+                          // className="w-36 h-16 "
+                          className="w-[13rem] h-[10rem]  absolute z-0 blur-sm right-0"
                           width={80}
                           height={80}
                           src={`${about.icon?.icon}`}

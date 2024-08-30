@@ -63,13 +63,20 @@ const LandingPage = () => {
       >
       </Link> */}
       <Sidebar onClose={handleSidebarClose} open={open} />
-      <div id='home' className={`${selectedLang === "fa" ? ' font-Yekan-Bakh-bold' : 'ltr font-Barlow-Regular'} font`}>
-      {/* <div id="home" className={`font-Barlow-Regular `}> */}
+      <div
+        id="home"
+        className={`${
+          selectedLang === "fa" || selectedLang === "ar"
+            ? " font-Yekan-Bakh-bold"
+            : "ltr font-Barlow-Regular"
+        } font`}
+      >
+        {/* <div id="home" className={`font-Barlow-Regular `}> */}
         <PortfolioImage />
-        <Hero />
+        <Hero selectedLang={selectedLang} />
         <About />
         <Projects />
-        <Team/>
+        <Team />
         <Technologies />
         <Contact />
       </div>

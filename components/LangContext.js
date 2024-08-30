@@ -25,13 +25,13 @@ const LanguageProvider = ({ children }) => {
   const theme = useTheme();
 
   // const router = useRouter()
-  const [lang, setLang] = useState("fa");
+  // const [lang, setLang] = useState("en");
   const [currentLang, setCurrentLang] = useState("Language");
   // const { t } = useTranslation();
   const [checked, setChecked] = React.useState(false);
 
   const handleLanguage = (selectedLang) => {
-    setLang(selectedLang);
+    // setLang(selectedLang);
     setCurrentLang(
      selectedLang === "en" 
   ? "English" 
@@ -181,9 +181,10 @@ const LanguageProvider = ({ children }) => {
   useEffect(() => {
     const selectedLang = Cookies.get('selectedLang');
     if (selectedLang) {
-      setLang(selectedLang);
+      // setLang(selectedLang);
       setCurrentLang(
         selectedLang === 'fa' ? 'Persian' :
+        selectedLang === 'ar' ? 'Arabic' :
           selectedLang === 'en' ? 'English' : ''
       );
       i18next.changeLanguage(selectedLang);

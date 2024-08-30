@@ -1,14 +1,20 @@
 
 
 import Image from 'next/image';
-import { useGetInfoQuery, useGetInfoFaQuery } from '../redux/services/main/about';
+import { useGetInfoQuery } from '../redux/services/main/about';
 import { useTheme } from '@mui/material/styles';
+import Cookies from "js-cookie";
+
 
 const PortfolioImage = () => {
+  const selectedLang = Cookies.get("selectedLang");
+
+  
     const theme = useTheme();
-    console.log(useGetInfoFaQuery())
     console.log(useGetInfoQuery())
-    const { data } = theme.palette.mode === 'dark' ? useGetInfoFaQuery() : theme.palette.mode === 'light' ? useGetInfoQuery() : null;
+    const { data, isLoading } = useGetInfoQuery("en"); 
+
+    // const { data } = theme.palette.mode === 'dark' ? useGetInfoFaQuery() : theme.palette.mode === 'light' ? useGetInfoQuery() : null;
 
     return (
       <div className="absolute right-0 top-[-0.25rem]">

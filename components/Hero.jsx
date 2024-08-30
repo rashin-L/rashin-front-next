@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import HeroButtons from './HeroButtons';
-import { useGetInfoQuery, useGetInfoFaQuery } from '@/redux/services/main/about';
+import { useGetInfoQuery } from '@/redux/services/main/about';
 import LightSpeed from 'react-reveal/LightSpeed'
 import Cookies from "js-cookie";
 import config from '../../config';
@@ -32,10 +32,19 @@ import { useTranslation } from 'react-i18next';
 const Hero = () => {
   // console.log(infoData)
   // console.log(`${config.backendUrl}/info?language=fa`)
-  const { t } = useTranslation(['translation'])
-  const selectedLang = Cookies.get('selectedLang');
-  const { data: infoData, isLoading } = selectedLang === 'fa' ? useGetInfoFaQuery() : useGetInfoQuery();
+ const { t } = useTranslation(["translation"]);
+ const selectedLang = Cookies.get("selectedLang") || "en";
+// const { data: infoData, isLoading } =
+//   selectedLang === "fa"
+//     ? useGetInfoFaQuery()
+//     : selectedLang === "ar"
+//     ? useGetInfoArQuery()
+//     : useGetInfoQuery(); 
+    
+  const { data: infoData, isLoading } = useGetInfoQuery(selectedLang || "en"); 
 
+    
+console.log(infoData);
   // useEffect(() => {
   //   if (selectedLang === 'fa') {
   //     useGetInfoFaQuery();`
@@ -46,66 +55,85 @@ const Hero = () => {
   // const { data:infoData } =  useGetInfoQuery()
 
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   });
 
   return (
-    <div
-      dir='ltr'
-      id='home'>
-      <Box sx={{ width: 1, height: 1, textAlign: "right" }} >
-        <Container padding={0} maxWidth='100%'
-        className=' !px-0'>
+    <div dir="ltr" id="home">
+      <Box sx={{ width: 1, height: 1, textAlign: "right" }}>
+        <Container padding={0} maxWidth="100%" className=" !px-0">
           <Box
-            display='flex'
-            flexDirection={{ xs: 'column', md: 'row' }}
-            position='relative'
+            display="flex"
+            flexDirection={{ xs: "column", md: "row" }}
+            position="relative"
             minHeight={{ md: 600 }}
           >
             <Box
               width={1}
               order={{ xs: 2, md: 1 }}
-              display='flex'
-              alignItems='center'
+              display="flex"
+              alignItems="center"
             >
               <Container>
                 {infoData && infoData[0] && (
-                  <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-                    <Box marginBottom={2} className={`${selectedLang === "fa" ? 'text-right mt-[11rem] sm:mt-72 lg:mt-0' : 'text-left mt-[11rem] sm:mt-64 lg:mt-0'} `}>
+                  <Box data-aos={isMd ? "fade-right" : "fade-up"}>
+                    <Box
+                      marginBottom={2}
+                      className={`${
+                        selectedLang === "fa" || selectedLang === "ar"
+                          ? "text-right mt-[11rem] sm:mt-72 lg:mt-0"
+                          : "text-left mt-[11rem] sm:mt-64 lg:mt-0"
+                      } `}
+                    >
                       <Typography
-                        className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${selectedLang === "fa" ? 'text-right ' : 'text-left'} text-sm`}
+                        dir={`${
+                          selectedLang === "fa" ||
+                          (selectedLang === "ar" && "rtl")
+                        }`}
+                        className={`!font-Yekan-Bakh-bold leading-[1.5rem]  ${
+                          selectedLang === "fa" || selectedLang === "ar"
+                            ? "text-right "
+                            : "text-left"
+                        } text-sm`}
                         color={theme.palette.text.primary}
-                        variant='h3'
+                        variant="h3"
                         fontWeight={700}
                       >
-                        {t("components.hero.hi")}{' '}
-                        <br />
-                        {t("components.hero.am")}{' '}
+                        {t("components.hero.hi")} <br />
+                        {t("components.hero.am")}{" "}
                       </Typography>
                       <LightSpeed>
-
                         <Typography
-                          className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${selectedLang === "fa" ? 'text-right' : 'text-left'}`}
+                          className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${
+                            selectedLang === "fa" || selectedLang === "ar"
+                              ? "text-right"
+                              : "text-left"
+                          }`}
                           color={theme.palette.primary.main}
-                          variant='h2'
+                          variant="h2"
                           fontWeight={900}
                           marginBottom={3}
-
                         >
-                          {infoData[0].first_name}  {infoData[0].last_name}
+                          {infoData[0].first_name} {infoData[0].last_name}
                         </Typography>
                       </LightSpeed>
-
                     </Box>
-                    <Box className=' !font-Yekan-Bakh-bold' marginBottom={3}>
+                    <Box className=" !font-Yekan-Bakh-bold" marginBottom={3}>
                       <Typography
-                        className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${selectedLang === "fa" ? 'text-end ' : 'text-justify'}`}
-                        variant='h6'
-                        component='p'
+                        dir={`${
+                          selectedLang === "fa" ||
+                          (selectedLang === "ar" && "rtl")
+                        }`}
+                        className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${
+                          selectedLang === "fa" || selectedLang === "ar"
+                            ? "text-start text-rtl "
+                            : "text-justify"
+                        }`}
+                        variant="h6"
+                        component="p"
                         color={theme.palette.text.secondary}
-                      // align='justify'
-
+                        // align='justify'
                       >
                         {infoData[0].description}
 
@@ -130,56 +158,55 @@ const Hero = () => {
                     <HeroButtons />
                   </Box>
                 )}
-
               </Container>
             </Box>
             <Box
               sx={{
-                flex: { xs: '0 0 100%', md: '0 0 50%' },
-                position: 'relative',
-                maxWidth: { xs: '100%', md: '50%' },
+                flex: { xs: "0 0 100%", md: "0 0 50%" },
+                position: "relative",
+                maxWidth: { xs: "100%", md: "50%" },
                 order: { xs: 1, md: 2 },
               }}
             >
               <Box
                 sx={{
-                  width: { xs: 1, md: '2' },
-                  height: '100%',
-                  position: 'relative',
+                  width: { xs: 1, md: "2" },
+                  height: "100%",
+                  position: "relative",
                   // className=' bg-black'
                 }}
               >
                 <Box
                   sx={{
-                    width: '100%',
-                    height: '100%',
-                    overflow: 'hidden',
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
                   }}
                 >
                   <Box
                     sx={{
-                      overflow: 'hidden',
-                      left: '0%',
+                      overflow: "hidden",
+                      left: "0%",
                       width: 1,
                       height: 1,
-                      position: { xs: 'relative', md: 'absolute' },
+                      position: { xs: "relative", md: "absolute" },
                       clipPath: {
-                        xs: 'none',
-                        md: 'polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)',
+                        xs: "none",
+                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
                       },
                       shapeOutside: {
-                        xs: 'none',
-                        md: 'polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)',
+                        xs: "none",
+                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
                       },
                     }}
                   >
                     <Box
                       sx={{
-                        height: { xs: 'auto', md: 1 },
-                        '& img': {
-                          objectFit: 'cover',
+                        height: { xs: "auto", md: 1 },
+                        "& img": {
+                          objectFit: "cover",
                         },
-                        '& .lazy-load-image-loaded': {
+                        "& .lazy-load-image-loaded": {
                           height: 1,
                           width: 1,
                         },
@@ -212,37 +239,37 @@ export default React.memo(Hero);
 
 import axios from 'axios';
 
-export async function getServerSideProps() {
+// export async function getServerSideProps() {
 
-  try {
-    console.log("***********************************")
+//   try {
+//     console.log("***********************************")
 
-    response = await axios.get(`${config.backendUrl}/info?language=fa`);
-    console.log(response)
+//     response = await axios.get(`${config.backendUrl}/info?language=fa`);
+//     console.log(response)
 
-    if (response.status === 200) {
-      const data = response.data;
+//     if (response.status === 200) {
+//       const data = response.data;
 
-      return {
-        props: {
-          projects: data
-        }
-      };
-    } else {
-      console.log('Response is not successful');
-      return {
-        props: {
-          projects: []
-        }
-      };
-    }
-  } catch (error) {
-    console.log('Error occurred while fetching data:', error);
-    return {
-      props: {
-        projects: []
-      }
-    };
-  }
-}
+//       return {
+//         props: {
+//           projects: data
+//         }
+//       };
+//     } else {
+//       console.log('Response is not successful');
+//       return {
+//         props: {
+//           projects: []
+//         }
+//       };
+//     }
+//   } catch (error) {
+//     console.log('Error occurred while fetching data:', error);
+//     return {
+//       props: {
+//         projects: []
+//       }
+//     };
+//   }
+// }
 
