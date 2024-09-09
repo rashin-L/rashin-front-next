@@ -1,34 +1,32 @@
 "use client";
 
-import React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import { useGetInfoQuery } from '@/redux/services/main/about';
-import { saveAs } from 'file-saver';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import { useGetInfoQuery } from "@/redux/services/main/about";
+import { saveAs } from "file-saver";
+import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
 
-
-
 const HeroButtons = () => {
-  const selectedLang = Cookies.get('selectedLang');
-  const { data } = useGetInfoQuery();
-  const { t } = useTranslation(['translation'])
+  const selectedLang = Cookies.get("selectedLang");
+  const { data } = useGetInfoQuery("en");
+  const { t } = useTranslation(["translation"]);
 
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up('md'), {
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   });
 
-
   const cvDownload = () => {
-    const fileUrl = data[0]?.cv;
-  const filename = 'Rashin_Latify_Full_Stack.pdf';
-  
-  saveAs(fileUrl, filename);
+    console.log(data);
+    const fileUrl = data[0]?.media.cv;
+    const filename = "Rashin_Latify_Full_Stack.pdf";
+
+    saveAs(fileUrl, filename);
   };
 
   return (

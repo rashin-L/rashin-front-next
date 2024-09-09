@@ -43,77 +43,90 @@ const Navbar = ({ onSidebarOpen }, props) => {
     });
 
     return (
-        <>
-            {/* <PortfolioImage/> */}
+      <>
+        {/* <PortfolioImage/> */}
 
-            <AppBar
-            className='!font-Yekan-Bakh-bold leading-[1.5rem]'
-                position='sticky'
-                elevation={theme.palette.mode === 'dark' ? 0 : trigger ? 1 : 0}
-                sx={{
-                    top: 0,
-                    border: 0,
-                    backgroundColor: trigger
-                        ? theme.palette.background.default
-                        : 'transparent',
-                    // alignItems:'flex-start'
-                }}
+        <AppBar
+          className="!font-Yekan-Bakh-bold leading-[1.5rem]"
+          position="sticky"
+          elevation={trigger ? 1 : 0}
+          //   elevation="1"
+          sx={{
+            top: 0,
+            border: 0,
+            backgroundColor: trigger
+              ? theme.palette.background.default
+              : "transparent",
+            // alignItems:'flex-start'
+          }}
+        >
+          <Toolbar sx={{ minHeight: 70 }}>
+            <Box
+              alignItems="center"
+              sx={{ display: { md: "block", lg: "none" } }}
             >
-                <Toolbar sx={{ minHeight: 70 }}>
-                    <Box
-                        alignItems='center'
-                        sx={{ display: { md: 'block', lg: 'none' } }}
-                    >
-                        <Button
-                            onClick={() => onSidebarOpen()}
-                            aria-label='Menu'
-                            variant='outlined'
-                            sx={{
-                                borderRadius: 2,
-                                minWidth: 'auto',
-                                padding: 1,
-                                color: theme.palette.primary.main,
-                                borderColor: alpha(theme.palette.primary.main, 0.2),
-                            }}
-                        >
-                            <MenuIcon fontSize='medium' />
-                        </Button>
-                    </Box>
-                    <Logo/>
-                
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box
-                        sx={{
-                            alignItems: 'center',
-                            display: { lg: 'flex', md: 'none', xs: 'none' },
-                        }}
-                    >
-                        {langBox}
-                        <CustomButton href='/#home' icon={<HomeIcon />} text={t('layout.nav.home')} />
-                        {/* <CustomButton href='/#home' icon={<HomeIcon />} text='Home' /> */}
-                        <CustomButton href='/#about' icon={<InfoIcon />} text={t('layout.nav.about' )}/>
-                        <CustomButton
-                            href='/#projects'
-                            icon={<ListIcon />}
-                            text={t('layout.nav.projects')}
-                        />
-                        <CustomButton
-                            href='/#technologies'
-                            icon={<DevicesIcon />}
-                            text={t('layout.nav.technologies')}
-                        />
-                        <CustomButton href='/#contact' icon={<EmailIcon />} text={t('layout.nav.contact')} />
-                    </Box>
-                    <Divider
-                        orientation='vertical'
-                        sx={{
-                            height: 32,
-                            mx: 2,
-                            display: { lg: 'flex', md: 'none', xs: 'none' },
-                        }}
-                    />
-                    <Light/>
-                    {/* <Box sx={{ display: 'flex' }}>
+              <Button
+                onClick={() => onSidebarOpen()}
+                aria-label="Menu"
+                variant="outlined"
+                sx={{
+                  borderRadius: 2,
+                  minWidth: "auto",
+                  padding: 1,
+                  color: theme.palette.primary.main,
+                  borderColor: alpha(theme.palette.primary.main, 0.2),
+                }}
+              >
+                <MenuIcon fontSize="medium" />
+              </Button>
+            </Box>
+            <Logo trigger={trigger} />
+
+            <Box sx={{ flexGrow: 1 }} />
+            <Box
+              sx={{
+                alignItems: "center",
+                display: { lg: "flex", md: "none", xs: "none" },
+              }}
+            >
+              {langBox}
+              <CustomButton
+                href="/#home"
+                icon={<HomeIcon />}
+                text={t("layout.nav.home")}
+              />
+              {/* <CustomButton href='/#home' icon={<HomeIcon />} text='Home' /> */}
+              <CustomButton
+                href="/#about"
+                icon={<InfoIcon />}
+                text={t("layout.nav.about")}
+              />
+              <CustomButton
+                href="/#projects"
+                icon={<ListIcon />}
+                text={t("layout.nav.projects")}
+              />
+              <CustomButton
+                href="/#technologies"
+                icon={<DevicesIcon />}
+                text={t("layout.nav.technologies")}
+              />
+              <CustomButton
+                href="/#contact"
+                icon={<EmailIcon />}
+                text={t("layout.nav.contact")}
+              />
+            </Box>
+            <Divider
+              orientation="vertical"
+              sx={{
+                height: 32,
+                mx: 2,
+                display: { lg: "flex", md: "none", xs: "none" },
+              }}
+            />
+            <Light />
+            {/* <Box sx={{ display: 'flex' }}>
                         <IconButton
                             onClick={colorMode.toggleColorMode}
                             aria-label='Theme Mode'
@@ -130,11 +143,10 @@ const Navbar = ({ onSidebarOpen }, props) => {
                         </IconButton>
                     </Box> */}
 
-                    {theme.palette.mode === 'dark' && <Divider />}
-                </Toolbar>
-            </AppBar>
-
-        </>
+            {theme.palette.mode === "dark" && <Divider />}
+          </Toolbar>
+        </AppBar>
+      </>
     );
 };
 

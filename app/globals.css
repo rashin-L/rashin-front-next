@@ -40,3 +40,16 @@
     direction: rtl !important;
 }
 
+.swiper-pagination-bullet {
+    color: aqua;
+}
+
+.css-riu05t{
+    z-index: 99 !important;
+    margin-bottom: 1rem !important;
+}
+
+.css-1sj2t5c{
+    position: absolute;
+    width: 12rem;
+}

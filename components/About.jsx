@@ -14,6 +14,7 @@ import { useGetAboutQuery } from '@/redux/services/main/about';
 // import { useGetAboutFaQuery } from '@/redux/services/main/about';
 import Cookies from "js-cookie";
 import { useTranslation } from 'react-i18next';
+import { Fade, Zoom } from "react-awesome-reveal";
 import SvgIcon from '@mui/material/SvgIcon';
 // import { Image } from '@mui/icons-material';
 
@@ -48,7 +49,7 @@ const About = () => {
               gutterBottom
             >
               {/* About Me */}
-              {t("components.about.about")}
+              <Zoom>{t("components.about.about")}</Zoom>
             </Typography>
             <Typography
               variant="h6"
@@ -63,13 +64,12 @@ const About = () => {
             </Typography>
           </Box>
           <Grid container spacing={4}>
-            {console.log(data && data)}
             {data &&
               data.map((about) => (
                 <Grid
                   className={`${
                     selectedLang === "fa" || selectedLang === "ar" ? "rtl" : ""
-                  }`}
+                  } !mb-16 sm:!mb-0`}
                   key={about.id}
                   item
                   xs={12}
@@ -88,15 +88,17 @@ const About = () => {
                     <ListItemAvatar>
                       {selectedLang === "en" && (
                         <Box color={theme.palette.primary.main}>
-                          <Image
-                            alt={`${about.icon?.title}`}
-                            // className="w-[4.8rem] h-16 "
-                            className="w-[12rem] h-[10rem]  absolute z-0 blur-sm left-8"
-                            width={80}
-                            height={80}
-                            src={`${about.icon?.icon}`}
-                            priority
-                          />
+                          <Fade delay={500}>
+                            <img
+                              alt={`${about.icon?.title}`}
+                              // className="w-[4.8rem] h-16 "
+                              className="w-[12rem] h-[10rem]  absolute z-0 blur-sm left-8"
+                              width={80}
+                              height={80}
+                              src={`${about.icon?.icon}`}
+                              priority
+                            />
+                          </Fade>
                         </Box>
                       )}
                     </ListItemAvatar>

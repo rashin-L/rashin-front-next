@@ -1,33 +1,60 @@
 "use client";
 
 import React from 'react';
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
+import Fade from 'react-awesome-reveal';
 import Link from '@mui/material/Link';
 import { alpha, useTheme } from '@mui/material/styles';
+import { useGetInfoQuery } from '@/redux/services/main/about';
+import Cookies from "js-cookie";
+// import config from '../../config';
+import { useTranslation } from "react-i18next";
+import Image from 'next/image';
 
 function Logo() {
+    const selectedLang = Cookies.get("selectedLang") || "en";
+    // const { data, isLoading } = useGetInfoQuery(selectedLang || "en"); 
+    const { data, isLoading } = useGetInfoQuery("en"); 
+
     const theme = useTheme();
 
     return (
-            <Link href='/' style={{ textDecoration: 'none' }}>
-                {theme.palette.mode === 'dark' ?
-                    <Fade top>
-                        <img width={270} height={20}
-                            className="w-[24rem] h-[7rem] md:w-[18rem] sm:h-auto"
-                            src='../../images/logo_dark.png' />
-                    </Fade>
-                    :
-                    <Fade top>
-                        <img width={270} height={20}
-                            className="w-[27rem] h-[9rem] sm:w-[18rem] sm:h-auto"
-                            src='../../images/logo.png' />
-                    </Fade>
-                }
-
-
-
-            </Link>
-
+      <Link href="/" style={{ textDecoration: "none" }}>
+        {data && data[0] && (
+          <>
+            {theme.palette.mode === "dark" ? (
+              <Fade top>
+                {/* <img
+              width={270}
+              height={20}
+              className="w-[24rem] h-[7rem] md:w-[18rem] sm:h-auto"
+              src={infoData?.media?.logo_dark}
+            /> */}
+                <Image
+                  src={data[0]?.media.logo_dark}
+                  alt="logo-dark"
+                  width={270}
+                  height={20}
+                  // className="w-[24rem] h-[7rem] md:w-[18rem] sm:h-auto"
+                  className="w-auto h-[6rem] py-1"
+                  priority
+                />
+                {/* src='../../images/logo_dark.png' /> */}
+              </Fade>
+            ) : (
+              <Fade top>
+                <Image
+                  width={270}
+                  height={20}
+                  className="w-auto h-[6rem] py-1"
+                  src={data[0]?.media?.logo_light}
+                />
+                {/* src='../../images/logo.png' /> */}
+              </Fade>
+            )}
+          </>
+        )}
+      </Link>
     );
 }
 

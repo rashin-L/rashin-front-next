@@ -51,12 +51,21 @@ function Contact() {
 
         if (response.data ) {
           Swal.fire({
-            icon: 'success',
+            icon: "success",
             // title: 'Yes...',
             // text: response.data.en,
-            text:`${selectedLang === "fa" ? response.data.fa : response.data.en}`
+            // text:`${selectedLang === "fa" ? response.data.fa : response.data.en}`
+            text: `${
+              selectedLang === "fa" && response.data.fa
+                ? response.data.fa
+                : selectedLang === "ar" && response.data.ar
+                ? response.data.ar
+                : response.data.en
+                ? response.data.en
+                : response.data.en
+            }`,
             // footer: '<a href="">Why do I have this issue?</a>'
-          })
+          });
 
           // navigate('/verify');
           setTimeout(() => {
@@ -110,52 +119,52 @@ function Contact() {
     }
   })
   return (
-    <div id='contact'
-    className={`${selectedLang === "fa" ? 'rtl' : ''}`}>
-      <Box position='relative' marginBottom={15}>
+    <div id="contact" className={`${selectedLang === "fa" ? "rtl" : ""}`}>
+      <Box position="relative" marginBottom={15}>
         <Box
           maxWidth={{ sm: 720, md: 1236 }}
           width={1}
-          margin='0 auto'
+          margin="0 auto"
           paddingX={2}
           paddingY={{ xs: 4, sm: 6, md: 8 }}
           paddingBottom={10}
         >
           <Box marginBottom={4}>
             <Typography
-              variant='h3'
-              align='center'
+              variant="h3"
+              align="center"
               fontWeight={700}
               marginTop={theme.spacing(1)}
-              data-aos='fade-up'
+              data-aos="fade-up"
               gutterBottom
             >
               {/* Get in touch */}
               {t("components.contact.title")}
-
             </Typography>
             <Typography
-              variant='h6'
-              align='center'
+              variant="h6"
+              align="center"
               color={theme.palette.text.secondary}
-              data-aos='fade-up'
+              data-aos="fade-up"
               marginTop={4}
-            // marginBottom={6}
+              // marginBottom={6}
             >
               {/* I would love to hear from you */}
               {t("components.contact.text")}
-
             </Typography>
           </Box>
 
-          <div className="   relative py-3  max-w-xs md:max-w-xl sm:mx-auto m-auto ">
-            <Box sx={{
-              backgroundColor: theme.palette.primary.main,
-            }} className=" right-4 left-4 absolute inset-0 bg-gradient-to-r shadow-lg transform  skew-y-0 -rotate-6 rounded-2xl"></Box>
+          <div className="   relative py-3 max-w-md md:max-w-xl sm:mx-auto m-auto ">
+            <Box
+              sx={{
+                backgroundColor: theme.palette.primary.main,
+              }}
+              className=" right-4 left-4 absolute inset-0 bg-gradient-to-r shadow-lg transform  skew-y-0 -rotate-6 rounded-2xl"
+            ></Box>
             <div className="relative px-4 py-10 bg-white shadow-lg rounded-2xl ">
               <div className="max-w-md mx-auto">
                 <div className="divide-y divide-gray-200">
-                  <form id='my-form' onSubmit={form.handleSubmit}>
+                  <form id="my-form" onSubmit={form.handleSubmit}>
                     <div className="pt-6  leading-6  text-gray-700  sm:leading-7   text-sm child:text-white child:md:text-light-blue child:md:dark:text-white  ">
                       <div className="md:flex gap-1 w-full flex-wrap  justify-between">
                         <div>
@@ -168,19 +177,29 @@ function Contact() {
                               value={form.values.first_name}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
-                              className={`${selectedLang === "fa" ? 'pr-5 text-right ' : 'pl-5 text-left'}    rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-
-                              placeholder={t("components.contact.first")} />
+                              className={`${
+                                selectedLang === "fa"
+                                  ? "pr-5 text-right "
+                                  : "pl-5 text-left"
+                              }    rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                              placeholder={t("components.contact.first")}
+                            />
                           </div>
-                          <HeadShake bottom >
-                            {form.errors.first_name && form.touched.first_name &&
-                              <span className=" block pl-5  ">
-                                <Box sx={{
-                                  color: theme.palette.primary.main,
-                                }}>
-                              <div className=' text-md font-bold md:text-md'>{form.errors.first_name}</div>
-                                </Box>
-                              </span>}
+                          <HeadShake bottom>
+                            {form.errors.first_name &&
+                              form.touched.first_name && (
+                                <span className=" block pl-5  ">
+                                  <Box
+                                    sx={{
+                                      color: theme.palette.primary.main,
+                                    }}
+                                  >
+                                    <div className=" text-md font-bold md:text-md">
+                                      {form.errors.first_name}
+                                    </div>
+                                  </Box>
+                                </span>
+                              )}
                           </HeadShake>
                         </div>
                         <div>
@@ -193,19 +212,29 @@ function Contact() {
                               value={form.values.last_name}
                               onChange={form.handleChange}
                               onBlur={form.handleBlur}
-                              className={` ${selectedLang === "fa" ? 'pr-5 text-right' : 'pl-5 text-left'}  mt-3 md:mt-0  rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-                              placeholder={t("components.contact.last")} />
+                              className={` ${
+                                selectedLang === "fa"
+                                  ? "pr-5 text-right"
+                                  : "pl-5 text-left"
+                              }  mt-3 md:mt-0  rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                              placeholder={t("components.contact.last")}
+                            />
                           </div>
-                          <HeadShake bottom >
-                            {form.errors.last_name && form.touched.last_name &&
-                              <span className=" block pl-5  ">
-                              <Box sx={{
-                                color: theme.palette.primary.main,
-                              }}>
-                                <div className=' text-md font-bold md:text-md'>{form.errors.last_name}</div>
-                                
-                              </Box>
-                            </span>}
+                          <HeadShake bottom>
+                            {form.errors.last_name &&
+                              form.touched.last_name && (
+                                <span className=" block pl-5  ">
+                                  <Box
+                                    sx={{
+                                      color: theme.palette.primary.main,
+                                    }}
+                                  >
+                                    <div className=" text-md font-bold md:text-md">
+                                      {form.errors.last_name}
+                                    </div>
+                                  </Box>
+                                </span>
+                              )}
                           </HeadShake>
                         </div>
                       </div>
@@ -218,19 +247,29 @@ function Contact() {
                           value={form.values.mobile_number}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={` mt-3 ${selectedLang === "fa" ? 'pr-5 text-right' : 'pl-5 text-left'}  h-10 rounded-[0.7rem]    w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-                          placeholder={t("components.contact.mobile")} />
+                          className={` mt-3 ${
+                            selectedLang === "fa"
+                              ? "pr-5 text-right"
+                              : "pl-5 text-left"
+                          }  h-10 rounded-[0.7rem]    w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                          placeholder={t("components.contact.mobile")}
+                        />
                       </div>
-                      <HeadShake bottom >
-                        {form.errors.mobile_number && form.touched.mobile_number &&
-                          <span className=" block pl-5  ">
-                            <Box sx={{
-                              color: theme.palette.primary.main,
-                            }}>
-                              <div className=' text-md font-bold md:text-md'>{form.errors.mobile_number}</div>
-                              
-                            </Box>
-                          </span>}
+                      <HeadShake bottom>
+                        {form.errors.mobile_number &&
+                          form.touched.mobile_number && (
+                            <span className=" block pl-5  ">
+                              <Box
+                                sx={{
+                                  color: theme.palette.primary.main,
+                                }}
+                              >
+                                <div className=" text-md font-bold md:text-md">
+                                  {form.errors.mobile_number}
+                                </div>
+                              </Box>
+                            </span>
+                          )}
                       </HeadShake>
                       <div className="relative">
                         <input
@@ -241,18 +280,28 @@ function Contact() {
                           value={form.values.email}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={` mt-3 ${selectedLang === "fa" ? 'pr-5 text-right' : 'pl-5 text-left'}   rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-                          placeholder={t("components.contact.email")} />
+                          className={` mt-3 ${
+                            selectedLang === "fa"
+                              ? "pr-5 text-right"
+                              : "pl-5 text-left"
+                          }   rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                          placeholder={t("components.contact.email")}
+                        />
                       </div>
-                      <HeadShake bottom >
-                        {form.errors.email && form.touched.email &&
+                      <HeadShake bottom>
+                        {form.errors.email && form.touched.email && (
                           <span className=" block pl-5  ">
-                            <Box sx={{
-                              color: theme.palette.primary.main,
-                            }}>
-                              <div className=' text-md font-bold md:text-md'>{form.errors.email}</div>
+                            <Box
+                              sx={{
+                                color: theme.palette.primary.main,
+                              }}
+                            >
+                              <div className=" text-md font-bold md:text-md">
+                                {form.errors.email}
+                              </div>
                             </Box>
-                          </span>}
+                          </span>
+                        )}
                       </HeadShake>
                       <div className="relative">
                         <input
@@ -262,18 +311,28 @@ function Contact() {
                           value={form.values.subject}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={` mt-3 ${selectedLang === "fa" ? 'pr-5 text-right' : 'pl-5 text-left'}   rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-                          placeholder={t("components.contact.subject")} />
+                          className={` mt-3 ${
+                            selectedLang === "fa"
+                              ? "pr-5 text-right"
+                              : "pl-5 text-left"
+                          }   rounded-[0.7rem]   h-10 w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                          placeholder={t("components.contact.subject")}
+                        />
                       </div>
-                      <HeadShake bottom >
-                        {form.errors.subject && form.touched.subject &&
+                      <HeadShake bottom>
+                        {form.errors.subject && form.touched.subject && (
                           <span className=" block pl-5  ">
-                            <Box sx={{
-                              color: theme.palette.primary.main,
-                            }}>
-                              <div className=' text-md font-bold md:text-md'>{form.errors.subject}</div>
+                            <Box
+                              sx={{
+                                color: theme.palette.primary.main,
+                              }}
+                            >
+                              <div className=" text-md font-bold md:text-md">
+                                {form.errors.subject}
+                              </div>
                             </Box>
-                          </span>}
+                          </span>
+                        )}
                       </HeadShake>
                       <div className="relative">
                         <textarea
@@ -286,43 +345,57 @@ function Contact() {
                           value={form.values.message}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
-                          className={`mt-3 ${selectedLang === "fa" ? 'pr-5 text-right'  : 'pl-5 text-left'}   rounded-[0.7rem]  w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
-                          placeholder={t("components.contact.message")}  ></textarea>
+                          className={`mt-3 ${
+                            selectedLang === "fa"
+                              ? "pr-5 text-right"
+                              : "pl-5 text-left"
+                          }   rounded-[0.7rem]  w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:shadow-md`}
+                          placeholder={t("components.contact.message")}
+                        ></textarea>
                       </div>
-                      <HeadShake bottom >
-                        {form.errors.message && form.touched.message &&
+                      <HeadShake bottom>
+                        {form.errors.message && form.touched.message && (
                           <span className=" block pl-5  ">
-                            <Box sx={{
-                              color: theme.palette.primary.main,
-                            }}>
-                              <div className=' text-md font-bold md:text-md'>{form.errors.message}</div>
-                            </Box></span>}
+                            <Box
+                              sx={{
+                                color: theme.palette.primary.main,
+                              }}
+                            >
+                              <div className=" text-md font-bold md:text-md">
+                                {form.errors.message}
+                              </div>
+                            </Box>
+                          </span>
+                        )}
                       </HeadShake>
                       <div className="relative">
                         <Button
-                          component='a'
-                          variant='contained'
-                          color='primary'
-                          size='large'
+                          component="a"
+                          variant="contained"
+                          color="primary"
+                          size="large"
                           disableElevation={true}
                           sx={{
-                            marginTop:'1.5rem',
+                            marginTop: "1.5rem",
 
-                            padding: '7px 18px',
+                            padding: "7px 18px",
                             // marginRight: '15px',
-                            fontSize: '14px',
-                            textTransform: 'none',
-                            border: '2px solid ' + theme.palette.primary.main,
-                            '&:hover': {
-                              backgroundColor: 'transparent',
+                            fontSize: "14px",
+                            textTransform: "none",
+                            border: "2px solid " + theme.palette.primary.main,
+                            "&:hover": {
+                              backgroundColor: "transparent",
                               color: theme.palette.primary.main,
-                              border: '2px solid ' + theme.palette.primary.main,
+                              border: "2px solid " + theme.palette.primary.main,
                             },
                           }}
                           type="submit"
                           onClick={form.submitForm}
-                          disabled={form.isSubmitting}
-                        > {t("components.contact.submit")}</Button>
+                          disabled={form.isSubmitting || isError }
+                        >
+                          {" "}
+                          {t("components.contact.submit")}
+                        </Button>
                       </div>
                     </div>
                   </form>

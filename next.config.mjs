@@ -24,6 +24,7 @@ const nextConfig = {
     },
 
      images: {
+        formats:['image/webp'],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -39,11 +40,11 @@ const nextConfig = {
         // REACT_APP_STAGE: "production",
 
     },
-    compiler: {
-        removeConsole: {
-            exclude: ['error'],
-        },
-    },
+    // compiler: {
+    //     removeConsole: {
+    //         exclude: ['error'],
+    //     },
+    // },
 
 };
 

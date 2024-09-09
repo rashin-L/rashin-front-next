@@ -83,7 +83,7 @@ const ProjectDetail = ({ slug }) => {
                                 projectData[0]?.project_main_img?.logo
                               }`}
                               alt="project_icon"
-                              className="w-8 h-8 mr-4 "
+                              className="w-12 h-12  "
                             />
                           )}
                         <Typography
@@ -113,18 +113,16 @@ const ProjectDetail = ({ slug }) => {
               <div className=" mt-6 w-full  child: font-OpenSansSemiBold text-light-blue dark:text-white">
                 <div className="flex flex-wrap items-baseline mb-3 font-bold text-xl">
                   {projectData[0] && projectData[0]?.project_type} |
-                  <span className="inline mb-3 text-xs">
+                  <span className="inline mb-3 text-xs ml-1">
                     {/* {selectedLang === "fa" && isClient */}
                     {/* {selectedLang === "fa" 
                       ? `${myDate}`
                       : `${projectData[0] && projectData[0]?.start_date} - ${
                           projectData[0] && projectData[0]?.end_date
                         }`} */}
-                    {selectedLang === "fa" &&
-                      //   ? `${myDate}`
-                      `${projectData[0] && projectData[0]?.start_date} - ${
-                        projectData[0] && projectData[0]?.end_date
-                      }`}
+                    {` ${projectData[0] && projectData[0]?.start_date} - ${
+                      projectData[0] && projectData[0]?.end_date
+                    }`}
                   </span>
                 </div>
 
@@ -235,7 +233,9 @@ const ProjectDetail = ({ slug }) => {
                       {projectData[0] &&
                         projectData[0]?.your_role_project.map((role) => (
                           <div className=" flex items-center">
-                            <LabelImportantIcon />
+                            <LabelImportantIcon
+                              color={`${theme.palette.primary.main}`}
+                            />
                             <span key={role?.id} className="block text-justify">
                               {role.description}
                             </span>

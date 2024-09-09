@@ -32,65 +32,87 @@ const Sidebar = ({ open, onClose }) => {
   return (
     <>
       <Drawer
-        anchor='left'
+        anchor="left"
         onClose={() => onClose()}
         open={open}
-        variant='temporary'
+        variant="temporary"
+        className=" !mt-12 z-[90]"
         sx={{
-          '& .MuiPaper-root': {
-            width: '100%',
+          "& .MuiPaper-root": {
+            width: "100%",
             maxWidth: 280,
+          },
+          "& .MuiButton-root": {
+            marginTop: "3rem",
           },
         }}
       >
-        <Box className='!font-Yekan-Bakh-bold leading-[1.5rem]' sx={{ height: '100%', padding: 1 }}>
+        <Box
+          className="!font-Yekan-Bakh-bold leading-[1.5rem]"
+          sx={{ height: "100%", padding: 1 }}
+        >
           <Box width={1} paddingX={2} paddingY={1}>
-            <Link href='/' style={{ textDecoration: 'none' }}>
-              {theme.palette.mode === 'dark' ?
+            <Link href="/" style={{ textDecoration: "none" }}>
+              {theme.palette.mode === "dark" ? (
                 <Fade top>
-                  <img width={270} height={20}
+                  <img
+                    width={270}
+                    height={20}
                     className="w-[27rem] h-[9rem] sm:w-[18rem] sm:h-auto"
-                    src='../../images/logo_dark.png' />
+                    src="../../images/logo_dark.png"
+                  />
                 </Fade>
-                :
+              ) : (
                 <Fade top>
-                  <img width={270} height={20}
+                  <img
+                    width={270}
+                    height={20}
                     className="w-[27rem] h-[9rem] sm:w-[18rem] sm:h-auto"
-                    src='../../images/logo.png' />
+                    src="../../images/logo.png"
+                  />
                 </Fade>
-              }
-
-
-
+              )}
             </Link>
           </Box>
-          <Box paddingX={2} paddingY={2} className='!font-Yekan-Bakh-bold leading-[1.5rem]'>
-            <CustomButton href='/#home' icon={<HomeIcon />} text={t('layout.nav.home')}/>
+          <Box
+            paddingX={2}
+            paddingY={2}
+            className="!font-Yekan-Bakh-bold leading-[1.5rem]"
+          >
+            <CustomButton
+              href="/#home"
+              icon={<HomeIcon />}
+              text={t("layout.nav.home")}
+            />
             <Box paddingY={1}>
-              <CustomButton href='/#about' icon={<InfoIcon />} text={t('layout.nav.about' )} />
+              <CustomButton
+                href="/#about"
+                icon={<InfoIcon />}
+                text={t("layout.nav.about")}
+              />
             </Box>
             <Box paddingY={1}>
               <CustomButton
-                href='/#projects'
+                href="/#projects"
                 icon={<ListIcon />}
-                text={t('layout.nav.projects')}
+                text={t("layout.nav.projects")}
               />
             </Box>
             <Box paddingY={1}>
               <CustomButton
-                href='/#technologies'
+                href="/#technologies"
                 icon={<DevicesIcon />}
-                text={t('layout.nav.technologies')}
+                text={t("layout.nav.technologies")}
               />
             </Box>
             <Box paddingY={1}>
               <CustomButton
-                href='/#contact'
+                href="/#contact"
                 icon={<EmailIcon />}
-                text={t('layout.nav.contact')}
+                text={t("layout.nav.contact")}
               />
             </Box>
-            <Box paddingY={1} marginLeft='-8rem'>
+            <Box paddingY={1} marginLeft="-8rem">
               {langBox}
             </Box>
           </Box>

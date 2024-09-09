@@ -18,12 +18,12 @@ const PortfolioImage = () => {
 
     return (
       <div className="absolute right-0 top-[-0.25rem]">
-        {console.log(data && data[0]?.main_img)}
+        {console.log(data && data[0]?.media.main_img)}
         {console.log(data && data)}
         <div className="rounded-[15rem] rounded-tr-lg rounded-bl-[20rem]  overflow-hidden">
           {data && data[0] && (
-            <Image
-              src={data[0]?.main_img}
+            <img
+              src={data[0]?.media.main_img}
               alt="Portfolio Image"
               width={500}
               height={800}

@@ -1,58 +1,26 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import HeroButtons from './HeroButtons';
-import { useGetInfoQuery } from '@/redux/services/main/about';
-import LightSpeed from 'react-reveal/LightSpeed'
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import HeroButtons from "./HeroButtons";
+import { useGetInfoQuery } from "@/redux/services/main/about";
+import LightSpeed from "react-reveal/LightSpeed";
 import Cookies from "js-cookie";
-import config from '../../config';
-import { useTranslation } from 'react-i18next';
+// import config from '../../config';
+import { useTranslation } from "react-i18next";
 
-
-
-// export async function getServerSideProps() {
-//   const api = createApi(); // Instantiate your API client
-//   const { data } = await api.endpoints.useGetInfoQuery(); // Fetch data using RTK Query
-//   const { data } = await useGetInfoQuery().toPromise();
-//   console.log( data );
-//   console.log('************');
-//   return {
-//     props: {
-//       infoData: data,
-//     },
-//   };
-// }
+import { Fade, Slide } from "react-awesome-reveal";
 
 const Hero = () => {
-  // console.log(infoData)
-  // console.log(`${config.backendUrl}/info?language=fa`)
- const { t } = useTranslation(["translation"]);
- const selectedLang = Cookies.get("selectedLang") || "en";
-// const { data: infoData, isLoading } =
-//   selectedLang === "fa"
-//     ? useGetInfoFaQuery()
-//     : selectedLang === "ar"
-//     ? useGetInfoArQuery()
-//     : useGetInfoQuery(); 
-    
-  const { data: infoData, isLoading } = useGetInfoQuery(selectedLang || "en"); 
+  const { t } = useTranslation(["translation"]);
+  const selectedLang = Cookies.get("selectedLang") || "en";
 
-    
-console.log(infoData);
-  // useEffect(() => {
-  //   if (selectedLang === 'fa') {
-  //     useGetInfoFaQuery();`
-  //   } else {
-  //     useGetInfoQuery();
-  //   }
-  // }, [selectedLang]);
-  // const { data:infoData } =  useGetInfoQuery()
+  const { data: infoData, isLoading } = useGetInfoQuery(selectedLang || "en");
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
@@ -104,19 +72,19 @@ console.log(infoData);
                         {t("components.hero.am")}{" "}
                       </Typography>
                       <LightSpeed>
-                        <Typography
-                          className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${
-                            selectedLang === "fa" || selectedLang === "ar"
-                              ? "text-right"
-                              : "text-left"
-                          }`}
-                          color={theme.palette.primary.main}
-                          variant="h2"
-                          fontWeight={900}
-                          marginBottom={3}
-                        >
-                          {infoData[0].first_name} {infoData[0].last_name}
-                        </Typography>
+                          <Typography
+                            className={`!font-Yekan-Bakh-bold leading-[1.5rem] ${
+                              selectedLang === "fa" || selectedLang === "ar"
+                                ? "text-right"
+                                : "text-left"
+                            }`}
+                            color={theme.palette.primary.main}
+                            variant="h2"
+                            fontWeight={900}
+                            marginBottom={2}
+                          >
+                            {infoData[0].first_name} {infoData[0].last_name}
+                          </Typography>
                       </LightSpeed>
                     </Box>
                     <Box className=" !font-Yekan-Bakh-bold" marginBottom={3}>
@@ -236,8 +204,7 @@ console.log(infoData);
 };
 export default React.memo(Hero);
 
-
-import axios from 'axios';
+// import axios from 'axios';
 
 // export async function getServerSideProps() {
 
@@ -272,4 +239,3 @@ import axios from 'axios';
 //     };
 //   }
 // }
-

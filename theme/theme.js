@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles'; 
 import typography from './typography';
 
 export default {
@@ -12,11 +12,12 @@ export default {
       },
       text: {
         primary: 'rgba(255, 255, 255, 0.95)',
-        secondary: 'rgba(255, 255, 255, 0.5)',
+        // secondary: 'rgba(255, 255, 255, 0.5)',
+        secondary: '#ffffff80',
         icon :'#d88102'
       },
       primary: {
-        main: '#47D8E1',
+        main: '#62b6cb',
         contrastText: 'rgb(235, 234, 239)',
       },
       divider: 'rgb(85, 89, 110)',
@@ -33,7 +34,8 @@ export default {
       },
       text: {
         primary: '#3C6071',
-        secondary: 'rgb(103, 119, 136)',
+        // secondary: 'rgb(103, 119, 136)',
+        secondary: '#677788',
       },
       primary: {
         main: '#1B80B7',

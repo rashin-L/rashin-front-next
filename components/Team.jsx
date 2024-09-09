@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import React from "react";
 import { Rotate } from "react-reveal";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 import { useState } from "react";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { Fade } from "react-awesome-reveal";
@@ -39,12 +39,17 @@ const Team = () => {
   // const { data } = useGetProjectQuery();
 
   return (
-    <div id="projects" className={`${selectedLang === "fa" ? "rtl" : "ltr"}`}>
+    <Box
+      id="team_projects"
+      className={`${
+        selectedLang === "fa" || selectedLang === "ar" ? "text-rtl" : "ltr"
+      } `}
+    >
       <Box
-        maxWidth={{ sm: 720, md: 1236 }}
+        maxWidth={{ xs: 600, sm: 720, md: 1236 }}
         width={1}
         margin="0 auto"
-        paddingX={2}
+        paddingX={4}
         paddingY={{ xs: 4, sm: 6, md: 8 }}
       >
         {/* <Link href={`/project/${item.id}`}> my link</Link> */}
@@ -73,124 +78,108 @@ const Team = () => {
             {t("components.projects.team-desc")}
           </Typography>
         </Box>
-        <Grid container spacing={4}>
+        <Box
+          className={`${
+            selectedLang === "fa" || selectedLang === "ar" ? "rtl" : "ltr"
+          } flex flex-col   gap-4 `}
+        >
           {data &&
             data?.map((item, i) => (
               <>
                 {item?.team_size > 1 && (
-                  <Grid
-                    onMouseLeave={() => setInfo("")}
-                    className={`${
-                      selectedLang === "fa" ? "rtl" : "ltr"
-                    } flex justify-center`}
-                    key={i}
-                    item
-                    xs={12}
-                    md={4}
-                    data-aos="fade-up"
-                    data-aos-delay={100}
-                    data-aos-offset={100}
-                    data-aos-duration={600}
-                  >
-                    {/* <Image
-                      onMouseEnter={() => setInfo(item.id)}
-                      // onMouseLeave={() => setInfo('')}
-                      // onMouseOut={() => setInfo(null)}
-                      // onMouseOver={() => setInfo(null)}
-                      src={item.project_main_img?.main_img}
-                      alt={item.project_main_img?.title}
-                      width={600}
-                      height={500}
-                      // className="w-[30%] h-[18rem] rounded-l-[4px]"
-                      className="w-full h-[18rem] rounded-l-[4px]"
-                      priority
-                    /> */}
-                    {/* <Fade> */}
-                    {/* {info === item.id && ( */}
+                  <>
+                    <Box
+                      component={Card}
+                      width={1}
+                      sx={{
+                        backgroundColor: "rgb(255 255 255 / 0.3)",
+                        transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
+                        opacity: 1, // Initial opacity is 1 (fully visible)
+                      }}
+                      // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
+                      // !bg-[${theme.palette.primary.main}]
+                      className={`w-full h-auto   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl p-4 `}
+                    >
                       <Box
-                        component={Card}
-                        width={1}
-                        display="flex"
-                        flexDirection="column"
-                        sx={{
-                          backgroundColor: "rgb(255 255 255 / 0.3)",
-                          transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
-                          opacity: 1, // Initial opacity is 1 (fully visible)
-                        }}
-                        // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
-                        // !bg-[${theme.palette.primary.main}]
-                        className={`w-full   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl absolute h-full z-[90] top-0`}
+                        onClick={() => router?.push(`/project/${item?.slug}`)}
+                        className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
                       >
-                        <CardContent className="h-[18rem]  ">
-                          <div
-                            onClick={() =>
-                              router?.push(`/project/${item?.slug}`)
-                            }
-                            className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
-                          >
-                            {item.project_main_img?.logo && (
-                              <Image
-                                src={`${item.project_main_img?.logo}`}
-                                alt={item.project_main_img?.title}
-                                width={100}
-                                height={100}
-                                className="w-[2rem] h-[2rem] drop-shadow-2xl"
-                                priority
-                              />
-                            )}
-                            <Typography
-                              variant="h4"
-                              // gutterBottom
-                              align="left"
-                              fontWeight={700}
-                              className=" self-end drop-shadow-2xl"
-                            >
-                              {item.project_name}
-                            </Typography>
-                          </div>
-
-                          <Typography
-                            variant="h6"
-                            fontWeight={700}
-                            className={`${
-                              selectedLang === "fa"
-                                ? "text-right mr-2"
-                                : selectedLang === "fa" && "text-left"
-                            } drop-shadow-2xl`}
-                            color={theme.palette.text.secondary}
-                          >
-                            {item.short_description}
-                          </Typography>
-
-                          <Box
-                            marginTop={2}
-                            display="flex"
-                            justifyContent="space-between"
-                          >
-                            <Box marginTop={2}>
-                              {item.skills_used.map((tag, i) => (
-                                <Chip
-                                  className="drop-shadow-2xl"
-                                  key={i}
-                                  label={tag.title}
-                                  variant="outlined"
-                                  sx={{ m: 1 }}
-                                />
-                              ))}
-                            </Box>
-                          </Box>
-                        </CardContent>
-                        <Box />
+                        {item.project_main_img?.logo && (
+                          <>
+                            <img
+                              src={`${item.project_main_img?.logo}`}
+                              alt={item.project_main_img?.title}
+                              width={100}
+                              height={100}
+                              className="w-auto h-[2rem] drop-shadow-2xl"
+                              priority
+                            />
+                          </>
+                        )}
                       </Box>
-                    {/* </Fade> */}
-                  </Grid>
+                      <Box className="flex items-baseline mb-2 gap-1">
+                        <Typography
+                          variant="h4"
+                          // gutterBottom
+                          align="left"
+                          fontWeight={700}
+                          className=" self-end drop-shadow-2xl"
+                        >
+                          {item.project_name}
+                        </Typography>
+                        ;
+                        <Typography
+                          variant="h6"
+                          fontWeight={700}
+                          className={`${
+                            selectedLang === "fa" || selectedLang === "ar"
+                              ? "text-right mr-2 text-rtl"
+                              : selectedLang === "en" && "text-left ltr"
+                          } drop-shadow-2xl !text-[0.8rem]`}
+                          color={theme.palette.text.secondary}
+                        >
+                          {item.short_description}
+                        </Typography>
+                      </Box>
+                      <Typography
+                        variant="h6"
+                        fontWeight={700}
+                        className={`${
+                          selectedLang === "fa" || selectedLang === "ar"
+                            ? "text-right mr-2 text-rtl"
+                            : selectedLang === "en" && "text-left ltr"
+                        } drop-shadow-2xl`}
+                        color={theme.palette.text.secondary}
+                      >
+                        {item.description}
+                      </Typography>
+
+                      <Box
+                        marginTop={2}
+                        display="flex"
+                        justifyContent="space-between"
+                      >
+                        <Box marginTop={2}>
+                          {item.skills_used.map((tag, i) => (
+                            <Chip
+                              className="drop-shadow-2xl"
+                              key={i}
+                              label={tag.title}
+                              variant="outlined"
+                              sx={{ m: 1 }}
+                            />
+                          ))}
+                        </Box>
+                      </Box>
+                    </Box>
+                  </>
                 )}
               </>
             ))}
-        </Grid>
+        </Box>
       </Box>
       <Divider />
-    </div>
+    </Box>
   );
 };
 
