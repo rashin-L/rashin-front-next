@@ -29,19 +29,20 @@ const Hero = () => {
 
   return (
     <div dir="ltr" id="home">
-      <Box sx={{ width: 1, height: 1, textAlign: "right" }}>
+      <Box sx={{ width: 1, height: 1, textAlign: "right" }} className=" pt-24">
         <Container padding={0} maxWidth="100%" className=" !px-0">
           <Box
             display="flex"
             flexDirection={{ xs: "column", md: "row" }}
             position="relative"
-            minHeight={{ md: 600 }}
+            // minHeight={{ md: 600 }}
           >
             <Box
               width={1}
               order={{ xs: 2, md: 1 }}
               display="flex"
               alignItems="center"
+              className="mb-12"
             >
               <Container>
                 {infoData && infoData[0] && (

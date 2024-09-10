@@ -14,6 +14,8 @@ import HeadShake from 'react-reveal/HeadShake';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 import Cookies from "js-cookie";
+import { Zoom } from "react-awesome-reveal";
+
 
 
 
@@ -138,8 +140,7 @@ function Contact() {
               data-aos="fade-up"
               gutterBottom
             >
-              {/* Get in touch */}
-              {t("components.contact.title")}
+              <Zoom>{t("components.contact.title")}</Zoom>
             </Typography>
             <Typography
               variant="h6"
@@ -391,7 +392,7 @@ function Contact() {
                           }}
                           type="submit"
                           onClick={form.submitForm}
-                          disabled={form.isSubmitting || isError }
+                          disabled={form.isSubmitting || isError}
                         >
                           {" "}
                           {t("components.contact.submit")}

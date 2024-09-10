@@ -30,7 +30,7 @@ const Footer = () => {
       <Box
         backgroundColor={theme.palette.background.default}
         // sticky footer - see four values below
-        position="fixed"
+        position="relative"
         bottom="0"
         left="0"
         width="100%"
@@ -52,7 +52,7 @@ const Footer = () => {
             xs={4}
             md={4}
             justifyContent="center"
-            className="justify-center mt-6 items-baseline "
+            className="justify-center mt-6 items-baseline md:pt-2 "
           >
             <List className=" block sm:hidden">
               <ListItemButton>

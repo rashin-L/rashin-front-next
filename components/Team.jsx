@@ -8,9 +8,7 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
-import {
-  useGetProjectQuery,
-} from "@/redux/services/project/project";
+import { useGetProjectQuery } from "@/redux/services/project/project";
 import { ImGithub } from "react-icons/im";
 import Cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
@@ -19,24 +17,16 @@ import { Rotate } from "react-reveal";
 import { useRouter } from "next/navigation";
 // import Image from "next/image";
 import { useState } from "react";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import { Fade } from "react-awesome-reveal";
+import {  Zoom, Slide, Bounce} from "react-awesome-reveal";
 
 const Team = () => {
   const router = useRouter();
   const { t } = useTranslation(["translation"]);
-  const [info, setInfo] = useState('');
   const selectedLang = Cookies.get("selectedLang");
 
-  // useEffect(() => {
-  //   console.log(Cookies.get("selectedLang"));
-  //   setselectedLang(Cookies.get("selectedLang"));
-  // }, [Cookies.get("selectedLang")]);
-
-    const { data } = useGetProjectQuery(selectedLang || 'en');
+  const { data } = useGetProjectQuery(selectedLang || "en");
 
   const theme = useTheme();
-  // const { data } = useGetProjectQuery();
 
   return (
     <Box
@@ -63,8 +53,7 @@ const Team = () => {
             data-aos="fade-up"
             gutterBottom
           >
-            {/* Projects */}
-            {t("components.projects.team-title")}
+            <Zoom>{t("components.projects.team-title")}</Zoom>
           </Typography>
           <Typography
             variant="h6"
@@ -98,14 +87,14 @@ const Team = () => {
                       }}
                       // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
                       // !bg-[${theme.palette.primary.main}]
-                      className={`w-full h-auto   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl p-4 `}
+                      className={`w-full h-[37rem] md:h-[15rem]   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl p-4 `}
                     >
                       <Box
                         onClick={() => router?.push(`/project/${item?.slug}`)}
                         className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
                       >
                         {item.project_main_img?.logo && (
-                          <>
+                          <Bounce>
                             <img
                               src={`${item.project_main_img?.logo}`}
                               alt={item.project_main_img?.title}
@@ -114,10 +103,10 @@ const Team = () => {
                               className="w-auto h-[2rem] drop-shadow-2xl"
                               priority
                             />
-                          </>
+                          </Bounce>
                         )}
                       </Box>
-                      <Box className="flex items-baseline mb-2 gap-1">
+                      <Box className="flex items-baseline mb-2 gap-1 flex-wrap">
                         <Typography
                           variant="h4"
                           // gutterBottom
@@ -129,7 +118,7 @@ const Team = () => {
                         </Typography>
                         ;
                         <Typography
-                          variant="h6"
+                          // variant="h6"
                           fontWeight={700}
                           className={`${
                             selectedLang === "fa" || selectedLang === "ar"
@@ -154,12 +143,9 @@ const Team = () => {
                         {item.description}
                       </Typography>
 
-                      <Box
-                        marginTop={2}
-                        display="flex"
-                        justifyContent="space-between"
-                      >
-                        <Box marginTop={2}>
+                      {/* <Box marginTop={2}> */}
+                      <Slide cascade>
+                        <Box className=" flex justify-between flex-wrap w-[-webkit-fill-available] sm:w-max">
                           {item.skills_used.map((tag, i) => (
                             <Chip
                               className="drop-shadow-2xl"
@@ -170,7 +156,8 @@ const Team = () => {
                             />
                           ))}
                         </Box>
-                      </Box>
+                      </Slide>
+                      {/* </Box> */}
                     </Box>
                   </>
                 )}

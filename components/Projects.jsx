@@ -20,7 +20,8 @@ import { Rotate } from "react-reveal";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { faL } from "@fortawesome/free-solid-svg-icons";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade, Zoom, Slide, Bounce } from "react-awesome-reveal";
+
 
 import Link from "next/link";
 
@@ -111,7 +112,7 @@ const Projects = () => {
                       width={600}
                       height={500}
                       // className="w-[30%] h-[18rem] rounded-l-[4px]"
-                      className={`w-full h-[18rem] rounded-l-[4px] ${
+                      className={`w-full h-[16rem] rounded-l-[4px] ${
                         info === item.id
                           ? theme.palette.mode === "dark"
                             ? "blur-md"
@@ -147,45 +148,47 @@ const Projects = () => {
                               }}
                               // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
                               // !bg-[${theme.palette.primary.main}]
-                              className={`!w-auto m-auto p-2 ${
+                              className={` !w-[-webkit-fill-available] m-auto p-2 ${
                                 theme.palette.mode === "dark"
                                   ? "[text-shadow:_0_1px_0_rgb(0_0_0_/_60%)]"
                                   : "[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] "
                               }   backdrop-blur-[10px] !bg-[${
                                 theme.palette.background.blur
-                              }] shadow-2xl absolute h-full z-[90] left-8 top-0 `}
+                              }] shadow-2xl absolute  z-[90] left-8 top-0 h-[19rem] `}
                             >
-                              <CardContent className="h-[18rem]  ">
-                                <Link
-                                  align="right"
-                                  href={item?.link}
-                                  className={`flex  gap-1 items-center align-baseline mb-2 cursor-pointer pb-2 `}
-                                >
-                                  {item.project_main_img?.logo && (
-                                    <img
-                                      src={`${item.project_main_img?.logo}`}
-                                      alt={item.project_main_img?.title}
-                                      width={100}
-                                      height={100}
-                                      className="w-[3rem] h-[3rem] drop-shadow-2xl"
-                                      priority
-                                    />
-                                  )}
-                                  <Typography
-                                    variant="h4"
-                                    // gutterBottom
-                                    // align="left"
-                                    fontWeight={700}
-                                    className={`self-end drop-shadow-2xl !text-[1.3rem] ${
-                                      selectedLang === "fa" ||
-                                      selectedLang === "ar"
-                                        ? "text-right mr-2"
-                                        : "text-left"
-                                    } `}
+                              <CardContent className="h-[20rem]  ">
+                                <Bounce>
+                                  <Link
+                                    align="right"
+                                    href={item?.link}
+                                    className={`flex  gap-1 items-center align-baseline mb-2 cursor-pointer pb-2 `}
                                   >
-                                    {item.project_name}
-                                  </Typography>
-                                </Link>
+                                    {item.project_main_img?.logo && (
+                                      <img
+                                        src={`${item.project_main_img?.logo}`}
+                                        alt={item.project_main_img?.title}
+                                        width={100}
+                                        height={100}
+                                        className="w-auto h-[2rem] drop-shadow-2xl"
+                                        priority
+                                      />
+                                    )}
+                                    <Typography
+                                      variant="h4"
+                                      // gutterBottom
+                                      // align="left"
+                                      fontWeight={700}
+                                      className={`self-end drop-shadow-2xl !text-[1.3rem] ${
+                                        selectedLang === "fa" ||
+                                        selectedLang === "ar"
+                                          ? "text-right "
+                                          : "text-left"
+                                      } `}
+                                    >
+                                      {item.project_name}
+                                    </Typography>
+                                  </Link>
+                                </Bounce>
 
                                 <Typography
                                   variant="h6"
@@ -193,7 +196,7 @@ const Projects = () => {
                                   className={`${
                                     selectedLang === "fa" ||
                                     selectedLang === "ar"
-                                      ? "text-right mr-2"
+                                      ? "text-right "
                                       : "text-left"
                                   } drop-shadow-2xl`}
                                   color={theme.palette.text.primary}
@@ -203,19 +206,23 @@ const Projects = () => {
 
                                 <Box
                                   marginTop={2}
-                                  display="flex"
-                                  justifyContent="space-between"
+                                  // display="flex"
+                                  // justifyContent="space-between"
                                 >
                                   <Box marginTop={2}>
-                                    {item.skills_used.map((tag, i) => (
-                                      <Chip
-                                        className="drop-shadow-2xl !text-[0.87rem] !m-[2px]"
-                                        key={i}
-                                        label={tag.title}
-                                        variant="outlined"
-                                        sx={{ m: 1 }}
-                                      />
-                                    ))}
+                                    <Slide cascade>
+                                      <Box className=" flex justify-between flex-wrap w-[17rem] sm:w-[20rem]">
+                                        {item.skills_used.map((tag, i) => (
+                                          <Chip
+                                            className="drop-shadow-2xl !text-[0.87rem] !m-[2px]"
+                                            key={i}
+                                            label={tag.title}
+                                            variant="outlined"
+                                            sx={{ m: 1 }}
+                                          />
+                                        ))}
+                                      </Box>
+                                    </Slide>
                                   </Box>
                                 </Box>
                               </CardContent>
@@ -233,7 +240,7 @@ const Projects = () => {
                                   }}
                                 >
                                   <Zoom>
-                                    <div className=" flex items-center gap-1  ">
+                                    <div className=" flex items-center gap-1 text-[1rem]  ">
                                       <IoInformationCircle size={22} />
                                       {t("components.projects.detail")}
                                     </div>

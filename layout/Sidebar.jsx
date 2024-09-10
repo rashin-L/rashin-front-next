@@ -13,7 +13,7 @@ import InfoIcon from '@mui/icons-material/InfoOutlined';
 import ListIcon from '@mui/icons-material/FormatListBulleted';
 import { LangContext } from '@/components/LangContext';
 import { useTranslation } from 'react-i18next';
-
+import Logo from './Logo';
 
 // Font Awesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -52,7 +52,7 @@ const Sidebar = ({ open, onClose }) => {
           sx={{ height: "100%", padding: 1 }}
         >
           <Box width={1} paddingX={2} paddingY={1}>
-            <Link href="/" style={{ textDecoration: "none" }}>
+            {/* <Link href="/" style={{ textDecoration: "none" }}>
               {theme.palette.mode === "dark" ? (
                 <Fade top>
                   <img
@@ -72,7 +72,8 @@ const Sidebar = ({ open, onClose }) => {
                   />
                 </Fade>
               )}
-            </Link>
+            </Link> */}
+            <Logo/>
           </Box>
           <Box
             paddingX={2}
@@ -80,12 +81,14 @@ const Sidebar = ({ open, onClose }) => {
             className="!font-Yekan-Bakh-bold leading-[1.5rem]"
           >
             <CustomButton
+              className=" !mt-0"
               href="/#home"
               icon={<HomeIcon />}
               text={t("layout.nav.home")}
             />
             <Box paddingY={1}>
               <CustomButton
+              className=" !mt-0"
                 href="/#about"
                 icon={<InfoIcon />}
                 text={t("layout.nav.about")}
@@ -93,6 +96,7 @@ const Sidebar = ({ open, onClose }) => {
             </Box>
             <Box paddingY={1}>
               <CustomButton
+              className=" !mt-0"
                 href="/#projects"
                 icon={<ListIcon />}
                 text={t("layout.nav.projects")}
@@ -100,6 +104,7 @@ const Sidebar = ({ open, onClose }) => {
             </Box>
             <Box paddingY={1}>
               <CustomButton
+              className=" !mt-0"
                 href="/#technologies"
                 icon={<DevicesIcon />}
                 text={t("layout.nav.technologies")}
@@ -107,6 +112,7 @@ const Sidebar = ({ open, onClose }) => {
             </Box>
             <Box paddingY={1}>
               <CustomButton
+              className=" !mt-0"
                 href="/#contact"
                 icon={<EmailIcon />}
                 text={t("layout.nav.contact")}

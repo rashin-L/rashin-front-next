@@ -36,7 +36,7 @@ function Logo() {
                   width={270}
                   height={20}
                   // className="w-[24rem] h-[7rem] md:w-[18rem] sm:h-auto"
-                  className="w-auto h-[6rem] py-1"
+                  className="w-auto h-16 sm:h-[6rem] py-1 mt-4"
                   priority
                 />
                 {/* src='../../images/logo_dark.png' /> */}
@@ -46,7 +46,7 @@ function Logo() {
                 <Image
                   width={270}
                   height={20}
-                  className="w-auto h-[6rem] py-1"
+                  className="w-auto  h-16 sm:h-[6rem] py-1 mt-4"
                   src={data[0]?.media?.logo_light}
                 />
                 {/* src='../../images/logo.png' /> */}

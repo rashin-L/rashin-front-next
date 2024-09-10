@@ -40,11 +40,11 @@ const nextConfig = {
         // REACT_APP_STAGE: "production",
 
     },
-    // compiler: {
-    //     removeConsole: {
-    //         exclude: ['error'],
-    //     },
-    // },
+    compiler: {
+        removeConsole: {
+            exclude: ['error'],
+        },
+    },
 
 };
 
