@@ -33,7 +33,7 @@ function Logo() {
                 <Image
                   src={data[0]?.media.logo_dark}
                   alt="logo-dark"
-                  width={270}
+                  width={170}
                   height={20}
                   // className="w-[24rem] h-[7rem] md:w-[18rem] sm:h-auto"
                   className="w-auto h-16 sm:h-[6rem] py-1 mt-4"
@@ -44,6 +44,7 @@ function Logo() {
             ) : (
               <Fade top>
                 <Image
+                  alt="logo-dark"
                   width={270}
                   height={20}
                   className="w-auto  h-16 sm:h-[6rem] py-1 mt-4"

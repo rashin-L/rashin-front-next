@@ -18,6 +18,10 @@ import { useRouter } from "next/navigation";
 // import Image from "next/image";
 import { useState } from "react";
 import {  Zoom, Slide, Bounce} from "react-awesome-reveal";
+import Image from "next/image";
+import { IoInformationCircle } from "react-icons/io5";
+import Link from "next/link";
+
 
 const Team = () => {
   const router = useRouter();
@@ -74,10 +78,11 @@ const Team = () => {
         >
           {data &&
             data?.map((item, i) => (
-              <>
+              <div key={i}>
                 {item?.team_size > 1 && (
                   <>
                     <Box
+                      key={i}
                       component={Card}
                       width={1}
                       sx={{
@@ -89,23 +94,27 @@ const Team = () => {
                       // !bg-[${theme.palette.primary.main}]
                       className={`w-full h-[37rem] md:h-[15rem]   backdrop-blur-[14px] !bg-[${theme.palette.background.blur}] shadow-2xl p-4 `}
                     >
-                      <Box
-                        onClick={() => router?.push(`/project/${item?.slug}`)}
+                      <Link
+                        href={item?.link}
+                        passHref
+                        legacyBehavior
                         className=" flex gap-1 items-center align-baseline mb-2 cursor-pointer"
                       >
-                        {item.project_main_img?.logo && (
-                          <Bounce>
-                            <img
-                              src={`${item.project_main_img?.logo}`}
-                              alt={item.project_main_img?.title}
-                              width={100}
-                              height={100}
-                              className="w-auto h-[2rem] drop-shadow-2xl"
-                              priority
-                            />
-                          </Bounce>
-                        )}
-                      </Box>
+                        <a target="_blank">
+                          {item.project_main_img?.logo && (
+                            <Zoom>
+                              <Image
+                                src={`${item.project_main_img?.logo}`}
+                                alt={item.project_main_img?.title}
+                                width={100}
+                                height={100}
+                                className="w-auto h-[2rem] drop-shadow-2xl mb-2"
+                                priority
+                              />
+                            </Zoom>
+                          )}
+                        </a>
+                      </Link>
                       <Box className="flex items-baseline mb-2 gap-1 flex-wrap">
                         <Typography
                           variant="h4"
@@ -157,11 +166,34 @@ const Team = () => {
                           ))}
                         </Box>
                       </Slide>
-                      {/* </Box> */}
+                      <div className=" flex items-start text-[1rem] gap-1 absolute bottom-0 ">
+                        <Button
+                          component="a"
+                          onClick={() => router?.push(`/project/${item?.slug}`)}
+                          target="_blank"
+                          sx={{
+                            textTransform: "none",
+                            flex: "0 0 auto",
+                            color: theme.palette.text.primary,
+                          }}
+                        >
+                          <Zoom>
+                            <Box
+                              sx={{
+                                color: theme.palette.primary.main,
+                              }}
+                              className=" flex items-center gap-1 text-[1rem]  "
+                            >
+                              <IoInformationCircle size={22} />
+                              {t("components.projects.detail")}
+                            </Box>
+                          </Zoom>
+                        </Button>
+                      </div>
                     </Box>
                   </>
                 )}
-              </>
+              </div>
             ))}
         </Box>
       </Box>

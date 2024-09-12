@@ -30,7 +30,14 @@ const About = () => {
 
 
   return (
-    <div id="about">
+    <div
+      className={`${
+        selectedLang === "fa" || selectedLang === "ar"
+          ? "text-right mr-2 text-rtl"
+          : selectedLang === "en" && "text-left ltr"
+      }`}
+      id="about"
+    >
       <Box
         maxWidth={{ sm: 720, md: 1236 }}
         width={1}

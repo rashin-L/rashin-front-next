@@ -22,7 +22,6 @@ const HeroButtons = () => {
   });
 
   const cvDownload = () => {
-    console.log(data);
     const fileUrl = data[0]?.media.cv;
     const filename = "Rashin_Latify_Full_Stack.pdf";
 

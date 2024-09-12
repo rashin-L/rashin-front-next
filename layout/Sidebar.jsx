@@ -42,37 +42,16 @@ const Sidebar = ({ open, onClose }) => {
             width: "100%",
             maxWidth: 280,
           },
-          "& .MuiButton-root": {
-            marginTop: "3rem",
-          },
+          // "& .MuiButton-root": {
+          //   marginTop: "3rem",
+          // },
         }}
       >
         <Box
           className="!font-Yekan-Bakh-bold leading-[1.5rem]"
-          sx={{ height: "100%", padding: 1 }}
+          sx={{ height: "100%", padding: 1 }} 
         >
           <Box width={1} paddingX={2} paddingY={1}>
-            {/* <Link href="/" style={{ textDecoration: "none" }}>
-              {theme.palette.mode === "dark" ? (
-                <Fade top>
-                  <img
-                    width={270}
-                    height={20}
-                    className="w-[27rem] h-[9rem] sm:w-[18rem] sm:h-auto"
-                    src="../../images/logo_dark.png"
-                  />
-                </Fade>
-              ) : (
-                <Fade top>
-                  <img
-                    width={270}
-                    height={20}
-                    className="w-[27rem] h-[9rem] sm:w-[18rem] sm:h-auto"
-                    src="../../images/logo.png"
-                  />
-                </Fade>
-              )}
-            </Link> */}
             <Logo/>
           </Box>
           <Box
@@ -80,12 +59,12 @@ const Sidebar = ({ open, onClose }) => {
             paddingY={2}
             className="!font-Yekan-Bakh-bold leading-[1.5rem]"
           >
-            <CustomButton
+            {/* <CustomButton
               className=" !mt-0"
               href="/#home"
               icon={<HomeIcon />}
               text={t("layout.nav.home")}
-            />
+            /> */}
             <Box paddingY={1}>
               <CustomButton
               className=" !mt-0"
@@ -118,7 +97,7 @@ const Sidebar = ({ open, onClose }) => {
                 text={t("layout.nav.contact")}
               />
             </Box>
-            <Box paddingY={1} marginLeft="-8rem">
+            <Box paddingBottom={1} marginLeft="-9rem">
               {langBox}
             </Box>
           </Box>

@@ -167,7 +167,10 @@ const Technologies = () => {
                               >
                                 {/* <p>{skill.title}</p> */}
                                 <div className="  flex justify-between items-center align-middle mt-2 ">
-                                  <img
+                                  <Image
+                                    alt="skill-icon"
+                                    width={40}
+                                    height={40}
                                     className=" w-8 h-8 mr-4 "
                                     src={`${skill.icon}`}
                                   />
@@ -249,10 +252,10 @@ const Technologies = () => {
                           {group.title}
 
                           <Image
+                            width={40}
+                            height={40}
                             src={`/images/group.svg`}
                             alt="group"
-                            width={50}
-                            height={40}
                             priority
                           />
                         </Typography>
@@ -264,7 +267,10 @@ const Technologies = () => {
                             >
                               {/* <p>{skill.title}</p> */}
                               <div className="  flex justify-between items-center align-middle mt-2 ">
-                                <img
+                                <Image
+                                  alt="skill-icon"
+                                  width={40}
+                                  height={40}
                                   className=" w-8 h-8 mr-4 "
                                   src={`${skill.icon}`}
                                 />

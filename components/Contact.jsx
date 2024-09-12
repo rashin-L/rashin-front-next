@@ -34,9 +34,6 @@ function Contact() {
     initialValues: { first_name: "", last_name: "", email: "", mobile_number: "", subject: "", message: "" },
 
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      console.log('isSubmitting')
-      console.log(form.isSubmitting)
-      console.log(values);
       if (isError) {
         console.log(error.data)
       }
@@ -49,7 +46,6 @@ function Contact() {
           subject: values.subject,
           message: values.message,
         }));
-        console.log(response)
 
         if (response.data ) {
           Swal.fire({
@@ -102,9 +98,10 @@ function Contact() {
         errors.last_name = `${ t("components.contact.errors.complete_family") } `
       }
       if (!values.email) {
-        errors.email = `${ t("components.contact.errors.email") } ` 
-      } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = `${ t("components.contact.errors.invalid_email") } ` 
+        errors.email = `${t("components.contact.errors.email")} `;
+      } else if (!/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/.test(values.email)) {
+        // } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+        errors.email = `${t("components.contact.errors.invalid_email")} `;
       }
       if (!/^\d+$/.test(values.mobile_number)) {
         errors.mobile_number = `${ t("components.contact.errors.mobile") } ` ;

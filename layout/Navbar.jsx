@@ -90,11 +90,11 @@ const Navbar = ({ onSidebarOpen }, props) => {
               }}
             >
               {langBox}
-              <CustomButton
+              {/* <CustomButton
                 href="/#home"
                 icon={<HomeIcon />}
                 text={t("layout.nav.home")}
-              />
+              /> */}
               {/* <CustomButton href='/#home' icon={<HomeIcon />} text='Home' /> */}
               <CustomButton
                 href="/#about"

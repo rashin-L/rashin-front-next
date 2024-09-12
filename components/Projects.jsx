@@ -21,6 +21,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { Fade, Zoom, Slide, Bounce } from "react-awesome-reveal";
+import Image from "next/image";
+
 
 
 import Link from "next/link";
@@ -105,7 +107,7 @@ const Projects = () => {
                     data-aos-offset={100}
                     data-aos-duration={600}
                   >
-                    <img
+                    <Image
                       onMouseEnter={() => setInfo(item.id)}
                       src={item.project_main_img?.main_img}
                       alt={item.project_main_img?.title}
@@ -157,38 +159,42 @@ const Projects = () => {
                               }] shadow-2xl absolute  z-[90] left-8 top-0 h-[19rem] `}
                             >
                               <CardContent className="h-[20rem]  ">
-                                <Bounce>
+                                <Zoom>
                                   <Link
+                                    passHref
+                                    legacyBehavior
                                     align="right"
                                     href={item?.link}
-                                    className={`flex  gap-1 items-center align-baseline mb-2 cursor-pointer pb-2 `}
+                                    className={`flex  gap-1 items-center align-baseline mb- cursor-pointer pb-2 `}
                                   >
-                                    {item.project_main_img?.logo && (
-                                      <img
-                                        src={`${item.project_main_img?.logo}`}
-                                        alt={item.project_main_img?.title}
-                                        width={100}
-                                        height={100}
-                                        className="w-auto h-[2rem] drop-shadow-2xl"
-                                        priority
-                                      />
-                                    )}
-                                    <Typography
-                                      variant="h4"
-                                      // gutterBottom
-                                      // align="left"
-                                      fontWeight={700}
-                                      className={`self-end drop-shadow-2xl !text-[1.3rem] ${
-                                        selectedLang === "fa" ||
-                                        selectedLang === "ar"
-                                          ? "text-right "
-                                          : "text-left"
-                                      } `}
-                                    >
-                                      {item.project_name}
-                                    </Typography>
+                                    <a target="_blank">
+                                      {item.project_main_img?.logo && (
+                                        <Image
+                                          src={`${item.project_main_img?.logo}`}
+                                          alt={item.project_main_img?.title}
+                                          width={100}
+                                          height={100}
+                                          className="w-auto h-[2.3rem] drop-shadow-2xl mb-2"
+                                          priority
+                                        />
+                                      )}
+                                      {/* <Typography
+                                        variant="h4"
+                                        // gutterBottom
+                                        // align="left"
+                                        fontWeight={700}
+                                        className={`self-end drop-shadow-2xl !text-[1.3rem] ${
+                                          selectedLang === "fa" ||
+                                          selectedLang === "ar"
+                                            ? "text-right "
+                                            : "text-left"
+                                        } `}
+                                      >
+                                        {item.project_name}
+                                      </Typography> */}
+                                    </a>
                                   </Link>
-                                </Bounce>
+                                </Zoom>
 
                                 <Typography
                                   variant="h6"
@@ -240,10 +246,18 @@ const Projects = () => {
                                   }}
                                 >
                                   <Zoom>
-                                    <div className=" flex items-center gap-1 text-[1rem]  ">
-                                      <IoInformationCircle size={22} />
+                                    <Box
+                                      sx={{
+                                        color: "#1B80B7",
+                                      }}
+                                      className=" flex items-center gap-1 text-[1rem]  "
+                                    >
+                                      <IoInformationCircle
+                                        size={22}
+                                        color="#1B80B7"
+                                      />
                                       {t("components.projects.detail")}
-                                    </div>
+                                    </Box>
                                   </Zoom>
                                 </Button>
                               </div>

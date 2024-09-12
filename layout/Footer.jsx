@@ -80,6 +80,7 @@ const Footer = () => {
                       ) : (
                         <Fade top>
                           <Image
+                            alt="logo-light"
                             width={270}
                             height={20}
                             className="w-auto h-[3rem] md:h-[4rem] py-1"
@@ -93,10 +94,7 @@ const Footer = () => {
                 </Box>
               </ListItemButton>
             </List>
-            <Box
-              width={1}
-              className="  !hidden sm:!block"
-            >
+            <Box width={1} className="  !hidden sm:!block">
               {info && info[0] && (
                 <>
                   {theme.palette.mode === "dark" ? (
@@ -115,6 +113,7 @@ const Footer = () => {
                   ) : (
                     <Fade top>
                       <Image
+                        alt="logo-dark"
                         width={270}
                         height={20}
                         className="w-auto h-[3rem] md:h-[4rem] py-1"
