@@ -6,6 +6,7 @@ import { ImGithub } from "react-icons/im";
 import Link from "next/link";
 import Flip from "react-reveal/Flip";
 import Bounce from "react-reveal/Bounce";
+import { Zoom } from "react-awesome-reveal";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import { PiCheckBold } from "react-icons/pi";
@@ -59,68 +60,49 @@ const ProjectDetail = ({ slug }) => {
       </div>
       {projectData && projectData.length > 0 && (
         <div
-          className={`max-w-[90%]  mx-auto mt-[18rem] md:mt-14 ${
+          className={`max-w-[90%]  mx-auto mt-52 md:mt-14 ${
             selectedLang === "fa" || selectedLang === "ar"
-              ? "text-right mr-2 text-rtl md:mr-[50%] md:ml-8 sm:mt-[26rem]"
+              ? "text-right mr-2 text-rtl md:mr-[50%] md:ml-8 sm:mt-[20rem]"
               : selectedLang === "en" && "text-left ltr "
           }`}
         >
           <div className="flex justify-between flex-wrap align-baseline ">
             <div className=" w-[50rem] h-auto overflow-visible">
-              <Link
-                legacyBehavior
-                passHref
-                href={`${projectData[0] && projectData[0]?.link}`}
-              >
-                <a target="_blank">
-                  <Bounce left>
-                    <div className="block mb-3 ">
-                      <div className=" flex gap-1 items-center align-baseline mb-2">
-                        {projectData[0] &&
-                          projectData[0]?.project_main_img?.logo && (
-                            <Link
-                              passHref
-                              legacyBehavior
-                              align="right"
-                              href={projectData[0] && projectData[0]?.link}
-                            >
-                              <a target="_blank">
-                                <Image
-                                  width={300}
-                                  height={100}
-                                  src={`${
-                                    projectData[0] &&
-                                    projectData[0]?.project_main_img?.logo
-                                  }`}
-                                  alt="project_icon"
-                                  className="w-auto h-8  "
-                                />
-                              </a>
-                            </Link>
-                          )}
-                        {/* <Typography
-                          variant="h6"
-                          align="left"
-                          fontWeight={700}
-                          className=" self-end"
-                        >
-                          {projectData[0] && projectData[0]?.project_name}
-                        </Typography> */}
-                      </div>
-                      {/* <Box
-                        sx={{
-                          color: theme.palette.primary.main,
-                        }}
-                        className=" flex flex-wrap gap-1 items-center align-bottom"
-                      >
-                        <h4 className=" font-medium text-lg inline">
-                          {projectData[0] && projectData[0]?.link}
-                        </h4>
-                      </Box> */}
-                    </div>
-                  </Bounce>
-                </a>
-              </Link>
+              <Zoom>
+                <Link
+                  passHref
+                  legacyBehavior
+                  align="right"
+                  href={projectData[0]?.link}
+                  className={`flex   gap-1 items-center align-baseline mb- cursor-pointer pb-2 `}
+                >
+                  <a target="_blank">
+                    {projectData[0]?.project_main_img?.logo && (
+                      <Image
+                        src={`${projectData[0]?.project_main_img?.logo}`}
+                        alt={projectData[0]?.project_main_img?.title}
+                        width={100}
+                        height={100}
+                        className="w-auto h-[2.3rem] drop-shadow-2xl "
+                        priority
+                      />
+                    )}
+                    <Typography
+                      variant="h4"
+                      // gutterBottom
+                      // align="left"
+                      fontWeight={700}
+                      className={`self-end drop-shadow-2xl !text-[0.8rem] ${
+                        selectedLang === "fa" || selectedLang === "ar"
+                          ? "text-right "
+                          : "text-left"
+                      } `}
+                    >
+                      {projectData[0]?.project_name}
+                    </Typography>
+                  </a>
+                </Link>
+              </Zoom>
 
               <div className=" mt-6 w-full  child: font-OpenSansSemiBold text-light-blue dark:text-white">
                 <div className="flex flex-wrap  font-bold text-xl gap-1 items-baseline align-bottom">

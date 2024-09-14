@@ -17,11 +17,17 @@ const PortfolioImage = () => {
 
   return (
     <Fade right>
-      <div className="absolute right-0 top-[-0.25rem]">
-        <div className="rounded-[15rem] rounded-tr-lg rounded-bl-[20rem]  overflow-hidden">
+      {/* <div className="absolute right-0 top-[-0.25rem]"> */}
+      <div className="absolute right-0 top-[7rem]">
+        {/* <div className="rounded-[15rem] rounded-tr-lg rounded-bl-[20rem]  overflow-hidden"> */}
+        <div className="rounded-l-full rounded-tr-lg   overflow-hidden">
           {data && data[0] && (
             <Image
-              src={data[0]?.media.main_img}
+              src={
+                theme.palette.mode === "dark"
+                  ? data[0]?.media.main_img_dark
+                  : data[0]?.media.main_img_light
+              }
               alt="Rashin"
               width={500}
               height={800}

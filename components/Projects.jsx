@@ -124,148 +124,147 @@ const Projects = () => {
                       priority
                     />
                     {info === item.id && (
-                      <Grid>
-                        <Fade triggerOnce>
-                          <div
-                            dir={`${
-                              selectedLang === "fa" || selectedLang === "ar"
-                                ? "rtl"
-                                : "ltr"
-                            }`}
-                          >
-                            <Box
-                              component={Card}
-                              width={1}
-                              display="flex"
-                              flexDirection="column"
-                              sx={{
-                                // backgroundColor: "rgb(255 255 255 / 0.3)",
-                                backgroundColor: `{${
-                                  theme.palette.mode === "dark"
-                                    ? "!bg-[#a6a6a671]"
-                                    : "!bg-[#ffffff71]"
-                                }}`,
-                                transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
-                                opacity: 1, // Initial opacity is 1 (fully visible)
-                              }}
-                              // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
-                              // !bg-[${theme.palette.primary.main}]
-                              className={` !w-[-webkit-fill-available] m-auto p-2 ${
+                    <Grid>
+                      <Fade triggerOnce>
+                        <div
+                          dir={`${
+                            selectedLang === "fa" || selectedLang === "ar"
+                              ? "rtl"
+                              : "ltr"
+                          }`}
+                        >
+                          <Box
+                            component={Card}
+                            width={1}
+                            display="flex"
+                            flexDirection="column"
+                            sx={{
+                              // backgroundColor: "rgb(255 255 255 / 0.3)",
+                              backgroundColor: `{${
                                 theme.palette.mode === "dark"
-                                  ? "[text-shadow:_0_1px_0_rgb(0_0_0_/_60%)]"
-                                  : "[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] "
-                              }   backdrop-blur-[10px] !bg-[${
-                                theme.palette.background.blur
-                              }] shadow-2xl absolute  z-[90] left-8 top-0 h-[19rem] `}
-                            >
-                              <CardContent className="h-[20rem]  ">
-                                <Zoom>
-                                  <Link
-                                    passHref
-                                    legacyBehavior
-                                    align="right"
-                                    href={item?.link}
-                                    className={`flex  gap-1 items-center align-baseline mb- cursor-pointer pb-2 `}
-                                  >
-                                    <a target="_blank">
-                                      {item.project_main_img?.logo && (
-                                        <Image
-                                          src={`${item.project_main_img?.logo}`}
-                                          alt={item.project_main_img?.title}
-                                          width={100}
-                                          height={100}
-                                          className="w-auto h-[2.3rem] drop-shadow-2xl mb-2"
-                                          priority
-                                        />
-                                      )}
-                                      {/* <Typography
-                                        variant="h4"
-                                        // gutterBottom
-                                        // align="left"
-                                        fontWeight={700}
-                                        className={`self-end drop-shadow-2xl !text-[1.3rem] ${
-                                          selectedLang === "fa" ||
-                                          selectedLang === "ar"
-                                            ? "text-right "
-                                            : "text-left"
-                                        } `}
-                                      >
-                                        {item.project_name}
-                                      </Typography> */}
-                                    </a>
-                                  </Link>
-                                </Zoom>
-
-                                <Typography
-                                  variant="h6"
-                                  fontWeight={700}
-                                  className={`${
-                                    selectedLang === "fa" ||
-                                    selectedLang === "ar"
-                                      ? "text-right "
-                                      : "text-left"
-                                  } drop-shadow-2xl`}
-                                  color={theme.palette.text.primary}
+                                  ? "!bg-[#a6a6a671]"
+                                  : "!bg-[#ffffff71]"
+                              }}`,
+                              transition: "opacity 0.6s ease-in-out", // Add transition for fade effect
+                              opacity: 1, // Initial opacity is 1 (fully visible)
+                            }}
+                            // dark:!bg-[#a6a6a671] !bg-[#ffffff71]
+                            // !bg-[${theme.palette.primary.main}]
+                            className={` !w-[-webkit-fill-available] m-auto p-2 ${
+                              theme.palette.mode === "dark"
+                                ? "[text-shadow:_0_1px_0_rgb(0_0_0_/_60%)]"
+                                : "[text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] "
+                            }   backdrop-blur-[10px] !bg-[${
+                              theme.palette.background.blur
+                            }] shadow-2xl absolute  z-[90] left-8 top-0 h-[19rem] `}
+                          >
+                            <CardContent className="h-[20rem]  ">
+                              <Zoom>
+                                <Link
+                                  passHref
+                                  legacyBehavior
+                                  align="right"
+                                  href={item?.link}
+                                  className={`flex   gap-1 items-center align-baseline mb- cursor-pointer pb-2 `}
                                 >
-                                  {item.short_description}
-                                </Typography>
-
-                                <Box
-                                  marginTop={2}
-                                  // display="flex"
-                                  // justifyContent="space-between"
-                                >
-                                  <Box marginTop={2}>
-                                    <Slide cascade>
-                                      <Box className=" flex justify-between flex-wrap w-[17rem] sm:w-[20rem]">
-                                        {item.skills_used.map((tag, i) => (
-                                          <Chip
-                                            className="drop-shadow-2xl !text-[0.87rem] !m-[2px]"
-                                            key={i}
-                                            label={tag.title}
-                                            variant="outlined"
-                                            sx={{ m: 1 }}
-                                          />
-                                        ))}
-                                      </Box>
-                                    </Slide>
-                                  </Box>
-                                </Box>
-                              </CardContent>
-                              <div className=" flex items-start text-[1rem] gap-1 absolute bottom-0 ">
-                                <Button
-                                  component="a"
-                                  onClick={() =>
-                                    router?.push(`/project/${item?.slug}`)
-                                  }
-                                  target="_blank"
-                                  sx={{
-                                    textTransform: "none",
-                                    flex: "0 0 auto",
-                                    color: theme.palette.text.primary,
-                                  }}
-                                >
-                                  <Zoom>
-                                    <Box
-                                      sx={{
-                                        color: "#1B80B7",
-                                      }}
-                                      className=" flex items-center gap-1 text-[1rem]  "
-                                    >
-                                      <IoInformationCircle
-                                        size={22}
-                                        color="#1B80B7"
+                                  <a target="_blank">
+                                    {item.project_main_img?.logo && (
+                                      <Image
+                                        src={`${item.project_main_img?.logo}`}
+                                        alt={item.project_main_img?.title}
+                                        width={100}
+                                        height={100}
+                                        className="w-auto h-[2.3rem] drop-shadow-2xl "
+                                        priority
                                       />
-                                      {t("components.projects.detail")}
+                                    )}
+                                    <Typography
+                                      variant="h4"
+                                      // gutterBottom
+                                      // align="left"
+                                      fontWeight={700}
+                                      className={`self-end drop-shadow-2xl !text-[0.8rem] ${
+                                        selectedLang === "fa" ||
+                                        selectedLang === "ar"
+                                          ? "text-right "
+                                          : "text-left"
+                                      } `}
+                                    >
+                                      {item.project_name}
+                                    </Typography>
+                                  </a>
+                                </Link>
+                              </Zoom>
+
+                              <Typography
+                                variant="h6"
+                                fontWeight={700}
+                                className={`!mt-2 ${
+                                  selectedLang === "fa" || selectedLang === "ar"
+                                    ? "text-right "
+                                    : "text-left"
+                                } drop-shadow-2xl`}
+                                color={theme.palette.text.primary}
+                              >
+                                {item.short_description}
+                              </Typography>
+
+                              <Box
+                                marginTop={2}
+                                // display="flex"
+                                // justifyContent="space-between"
+                              >
+                                <Box marginTop={2}>
+                                  <Slide cascade>
+                                    <Box className=" flex justify-between flex-wrap w-[17rem] sm:w-[20rem]">
+                                      {item.skills_used.map((tag, i) => (
+                                        <Chip
+                                          className="drop-shadow-2xl !text-[0.87rem] !m-[2px]"
+                                          key={i}
+                                          label={tag.title}
+                                          variant="outlined"
+                                          sx={{ m: 1 }}
+                                        />
+                                      ))}
                                     </Box>
-                                  </Zoom>
-                                </Button>
-                              </div>
-                              <Box />
-                            </Box>
-                          </div>
-                        </Fade>
-                      </Grid>
+                                  </Slide>
+                                </Box>
+                              </Box>
+                            </CardContent>
+                            <div className=" flex items-start text-[1rem] gap-1 absolute bottom-0 ">
+                              <Button
+                                component="a"
+                                onClick={() =>
+                                  router?.push(`/project/${item?.slug}`)
+                                }
+                                target="_blank"
+                                sx={{
+                                  textTransform: "none",
+                                  flex: "0 0 auto",
+                                  color: theme.palette.text.primary,
+                                }}
+                              >
+                                <Zoom>
+                                  <Box
+                                    sx={{
+                                      color: "#1B80B7",
+                                    }}
+                                    className=" flex items-center gap-1 text-[1rem]  "
+                                  >
+                                    <IoInformationCircle
+                                      size={22}
+                                      color="#1B80B7"
+                                    />
+                                    {t("components.projects.detail")}
+                                  </Box>
+                                </Zoom>
+                              </Button>
+                            </div>
+                            <Box />
+                          </Box>
+                        </div>
+                      </Fade>
+                    </Grid>
                     )}
                   </Grid>
                 )}
