@@ -1,36 +1,20 @@
 "use client"
 import React, { useState, useEffect, useMemo } from 'react';
-// import PropTypes from 'prop-types';
 import AOS from 'aos';
 import Head from 'next/head';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { CacheProvider } from '@emotion/react';
-// import { appWithTranslation } from 'next-i18next';
 import 'aos/dist/aos.css';
 import LanguageProvider from '../components/LangContext';
-
 import { theme as customTheme } from '../theme';
 import createEmotionCache from '../utils/createEmotionCache';
 import ColorModeContext from '../components/ColorModeContext';
 import Layout from '../layout/Layout';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n';
-
-// import { Inter } from "next/font/google";
 import "./globals.css";
 
-// const inter = Inter({ subsets: ["latin"] });
-
-// import localFont from 'next/font/local'
-
-// export const metadata = {
-//   title: "بیت هوم",
-//   description: "نگران آینده هستی؟ به فکر خرید خونه باش همین حالا با کمترین سرمایه با بیت هوم شروع کن!",
-// };
-// const yekanBakh = localFont({
-//   src: '../public/font/Yekan_Bakh.ttf',
-// })
 const clientSideEmotionCache = createEmotionCache();
 
 export default function RootLayout({ children ,
@@ -39,7 +23,6 @@ export default function RootLayout({ children ,
   const [mode, setMode] = useState('dark');
   const colorMode = useMemo(
     () => ({
-      // The theme mode switch will invoke this method
       toggleColorMode: () => {
         window.localStorage.setItem(
           'themeMode',
@@ -95,9 +78,9 @@ export default function RootLayout({ children ,
           content='programming, python, javascript, portfolio, website, fullstack, react, next, django'
         />
         <link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-/>
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
         <title>Rashin Web Dev</title>
       </Head>
       <ColorModeContext.Provider value={colorMode}>
